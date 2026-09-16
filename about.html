@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Online Books - About Us</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f6f8fc;
+            color: #172033;
+            line-height: 1.6;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            gap: 45px;
+            padding: 18px 30px;
+            background: rgba(255, 255, 255, .94);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid #e7ebf2;
+            box-shadow: 0 4px 20px rgba(20, 30, 60, .06);
+        }
+
+        nav a {
+            position: relative;
+            color: #475569;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            padding: 6px 0;
+            transition: .25s;
+        }
+
+        nav a:hover {
+            color: #2563eb;
+        }
+
+        nav a::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background: #2563eb;
+            border-radius: 10px;
+            transform: translateX(-50%);
+            transition: .25s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            padding: 80px 20px 75px;
+            background:
+                radial-gradient(circle at 15% 20%, rgba(37, 99, 235, .12), transparent 30%),
+                radial-gradient(circle at 85% 80%, rgba(59, 130, 246, .10), transparent 30%);
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            right: -120px;
+            top: -120px;
+            background: #eaf1ff;
+            border-radius: 50%;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            width: 220px;
+            height: 220px;
+            left: -100px;
+            bottom: -110px;
+            background: #eaf1ff;
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-label {
+            display: inline-block;
+            color: #2563eb;
+            background: #eaf1ff;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .hero h1 {
+            color: #111827;
+            font-size: clamp(38px, 6vw, 62px);
+            font-weight: 800;
+            letter-spacing: -2px;
+            margin-bottom: 14px;
+        }
+
+        .hero h1 span {
+            color: #2563eb;
+        }
+
+        .hero p {
+            max-width: 680px;
+            margin: auto;
+            color: #64748b;
+            font-size: 17px;
+        }
+
+        .about-section {
+            width: min(1100px, 92%);
+            margin: auto;
+            padding: 75px 0;
+        }
+
+        .story {
+            display: grid;
+            grid-template-columns: 1.1fr .9fr;
+            gap: 55px;
+            align-items: center;
+        }
+
+        .section-label {
+            color: #2563eb;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 9px;
+        }
+
+        .story h2 {
+            color: #111827;
+            font-size: 38px;
+            line-height: 1.2;
+            margin-bottom: 18px;
+        }
+
+        .story h2 span {
+            color: #2563eb;
+        }
+
+        .story p {
+            color: #64748b;
+            font-size: 15px;
+            margin-bottom: 15px;
+        }
+
+        .story-box {
+            position: relative;
+            min-height: 330px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 35px;
+            border-radius: 25px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #172554, #2563eb);
+            box-shadow: 0 20px 45px rgba(37, 99, 235, .20);
+        }
+
+        .story-box::before {
+            content: "";
+            position: absolute;
+            width: 230px;
+            height: 230px;
+            right: -80px;
+            top: -80px;
+            border: 45px solid rgba(255, 255, 255, .08);
+            border-radius: 50%;
+        }
+
+        .story-box::after {
+            content: "";
+            position: absolute;
+            width: 170px;
+            height: 170px;
+            left: -70px;
+            bottom: -70px;
+            border: 35px solid rgba(255, 255, 255, .07);
+            border-radius: 50%;
+        }
+
+        .book-icon {
+            position: relative;
+            z-index: 2;
+            width: 150px;
+            height: 190px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px 15px 15px 8px;
+            background: linear-gradient(135deg, #ffffff, #dbeafe);
+            color: #2563eb;
+            font-size: 70px;
+            box-shadow: 15px 18px 30px rgba(0, 0, 0, .22);
+            transform: rotate(-5deg);
+        }
+
+        .book-icon::before {
+            content: "";
+            position: absolute;
+            left: 14px;
+            top: 0;
+            width: 5px;
+            height: 100%;
+            background: #bfdbfe;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin-top: 65px;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 25px 15px;
+            background: white;
+            border: 1px solid #e5eaf2;
+            border-radius: 16px;
+            box-shadow: 0 6px 20px rgba(30, 41, 59, .05);
+            transition: .3s;
+        }
+
+        .stat:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(30, 41, 59, .10);
+        }
+
+        .stat strong {
+            display: block;
+            color: #2563eb;
+            font-size: 30px;
+            margin-bottom: 3px;
+        }
+
+        .stat span {
+            color: #64748b;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .values-section {
+            background: white;
+            border-top: 1px solid #e8edf5;
+            border-bottom: 1px solid #e8edf5;
+        }
+
+        .values-inner {
+            width: min(1100px, 92%);
+            margin: auto;
+            padding: 75px 0;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .section-heading h2 {
+            color: #111827;
+            font-size: 34px;
+            margin-bottom: 7px;
+        }
+
+        .section-heading p {
+            color: #64748b;
+            font-size: 14px;
+            max-width: 600px;
+            margin: auto;
+        }
+
+        .value-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .value-card {
+            padding: 30px 25px;
+            text-align: center;
+            background: #f8faff;
+            border: 1px solid #e5eaf2;
+            border-radius: 18px;
+            transition: .3s;
+        }
+
+        .value-card:hover {
+            transform: translateY(-7px);
+            border-color: #cbdcff;
+            box-shadow: 0 15px 35px rgba(30, 41, 59, .08);
+        }
+
+        .value-icon {
+            width: 58px;
+            height: 58px;
+            margin: 0 auto 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 15px;
+            background: #eaf1ff;
+            color: #2563eb;
+            font-size: 26px;
+        }
+
+        .value-card h3 {
+            color: #111827;
+            font-size: 19px;
+            margin-bottom: 8px;
+        }
+
+        .value-card p {
+            color: #64748b;
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        .mission {
+            width: min(1100px, 92%);
+            margin: auto;
+            padding: 75px 0;
+        }
+
+        .mission-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 45px;
+            align-items: center;
+            padding: 45px;
+            border-radius: 22px;
+            background: linear-gradient(135deg, #eff6ff, #f8fafc);
+            border: 1px solid #dbe7ff;
+        }
+
+        .mission h2 {
+            color: #111827;
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .mission h2 span {
+            color: #2563eb;
+        }
+
+        .mission p {
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        .mission-list {
+            display: grid;
+            gap: 13px;
+        }
+
+        .mission-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 13px 15px;
+            background: white;
+            border-radius: 10px;
+            border: 1px solid #e5eaf2;
+            color: #475569;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .check {
+            width: 25px;
+            height: 25px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: #dbeafe;
+            color: #2563eb;
+            font-weight: bold;
+        }
+
+        .cta {
+            width: min(1100px, 92%);
+            margin: 0 auto 75px;
+            padding: 45px 30px;
+            text-align: center;
+            border-radius: 22px;
+            background: linear-gradient(135deg, #172554, #2563eb);
+            box-shadow: 0 18px 40px rgba(37, 99, 235, .20);
+        }
+
+        .cta h2 {
+            color: white;
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .cta p {
+            color: #dbeafe;
+            font-size: 14px;
+            margin-bottom: 22px;
+        }
+
+        .cta a {
+            display: inline-block;
+            padding: 12px 23px;
+            border-radius: 9px;
+            background: white;
+            color: #2563eb;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 700;
+            transition: .25s;
+        }
+
+        .cta a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, .18);
+        }
+
+        .back-home {
+            text-align: center;
+            margin-bottom: 55px;
+        }
+
+        .back-home a {
+            color: #2563eb;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .back-home a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            background: #111827;
+            color: #94a3b8;
+            text-align: center;
+            padding: 25px 20px;
+            font-size: 13px;
+        }
+
+        footer strong {
+            color: #fff;
+        }
+
+        @media (max-width: 850px) {
+
+            .story {
+                grid-template-columns: 1fr;
+            }
+
+            .story-box {
+                min-height: 280px;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .value-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .mission-box {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            nav {
+                gap: 20px;
+                padding: 15px;
+            }
+
+            nav a {
+                font-size: 13px;
+            }
+
+            .hero {
+                padding: 55px 20px;
+            }
+
+            .hero h1 {
+                font-size: 38px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            .about-section,
+            .values-inner,
+            .mission {
+                padding-top: 55px;
+                padding-bottom: 55px;
+            }
+
+            .story h2 {
+                font-size: 31px;
+            }
+
+            .stats {
+                margin-top: 45px;
+            }
+
+            .mission-box {
+                padding: 30px 22px;
+            }
+
+            .cta {
+                padding: 35px 20px;
+            }
+
+            .cta h2 {
+                font-size: 27px;
+            }
+        }
+
+        @media (max-width: 450px) {
+
+            nav {
+                gap: 13px;
+            }
+
+            nav a {
+                font-size: 12px;
+            }
+
+            .stats {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+
+            .stat {
+                padding: 20px 10px;
+            }
+
+            .stat strong {
+                font-size: 25px;
+            }
+
+            .book-icon {
+                width: 125px;
+                height: 165px;
+                font-size: 58px;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <nav>
+
+        <a href="index.html">Home</a>
+        <a href="books.html">Books</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="categories.html">Categories</a>
+
+    </nav>
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <div class="hero-label">
+                About Online Books
+            </div>
+
+            <h1>
+                A Place for <span>Every Story</span>
+            </h1>
+
+            <p>
+                Discover exciting adventures, timeless classics, and unforgettable
+                characters in one beautiful online collection.
+            </p>
+
+        </div>
+
+    </section>
+
+    <section class="about-section">
+
+        <div class="story">
+
+            <div>
+
+                <div class="section-label">
+                    Our Story
+                </div>
+
+                <h2>
+                    More Than Just a <span>Bookstore</span>
+                </h2>
+
+                <p>
+                    Online Books was created for people who believe that a great
+                    book can take you somewhere completely new.
+                </p>
+
+                <p>
+                    Our goal is to make discovering books simple, enjoyable, and
+                    exciting. Whether you love fantasy, science fiction, classics,
+                    mystery, romance, or adventure, there is always another story
+                    waiting to be discovered.
+                </p>
+
+                <p>
+                    We bring different types of books together in one easy-to-use
+                    collection so readers can spend less time searching and more
+                    time reading.
+                </p>
+
+            </div>
+
+            <div class="story-box">
+
+                <div class="book-icon">
+                    📖
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="stats">
+
+            <div class="stat">
+                <strong>100+</strong>
+                <span>Books Available</span>
+            </div>
+
+            <div class="stat">
+                <strong>9</strong>
+                <span>Book Categories</span>
+            </div>
+
+            <div class="stat">
+                <strong>24/7</strong>
+                <span>Online Access</span>
+            </div>
+
+            <div class="stat">
+                <strong>1</strong>
+                <span>Love of Reading</span>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="values-section">
+
+        <div class="values-inner">
+
+            <div class="section-heading">
+
+                <div class="section-label">
+                    What We Believe
+                </div>
+
+                <h2>Our Values</h2>
+
+                <p>
+                    Everything we do is built around making reading more enjoyable
+                    and discovering new stories easier.
+                </p>
+
+            </div>
+
+            <div class="value-grid">
+
+                <div class="value-card">
+
+                    <div class="value-icon">
+                        📚
+                    </div>
+
+                    <h3>Great Stories</h3>
+
+                    <p>
+                        We love bringing together stories that can entertain,
+                        inspire, challenge, and transport readers to new worlds.
+                    </p>
+
+                </div>
+
+                <div class="value-card">
+
+                    <div class="value-icon">
+                        🔎
+                    </div>
+
+                    <h3>Easy Discovery</h3>
+
+                    <p>
+                        Our collection is designed to make finding your next
+                        favourite book simple and enjoyable.
+                    </p>
+
+                </div>
+
+                <div class="value-card">
+
+                    <div class="value-icon">
+                        💙
+                    </div>
+
+                    <h3>Love of Reading</h3>
+
+                    <p>
+                        At the heart of Online Books is a simple idea: reading
+                        should be exciting, accessible, and fun.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="mission">
+
+        <div class="mission-box">
+
+            <div>
+
+                <div class="section-label">
+                    Our Mission
+                </div>
+
+                <h2>
+                    Helping You Find Your <span>Next Adventure</span>
+                </h2>
+
+                <p>
+                    From a quiet afternoon with a classic novel to an exciting
+                    journey through a fantasy world, we want every visit to
+                    Online Books to lead you toward a story worth remembering.
+                </p>
+
+            </div>
+
+            <div class="mission-list">
+
+                <div class="mission-item">
+
+                    <div class="check">✓</div>
+
+                    Easy-to-browse book collections
+
+                </div>
+
+                <div class="mission-item">
+
+                    <div class="check">✓</div>
+
+                    A variety of genres and stories
+
+                </div>
+
+                <div class="mission-item">
+
+                    <div class="check">✓</div>
+
+                    Simple and enjoyable experience
+
+                </div>
+
+                <div class="mission-item">
+
+                    <div class="check">✓</div>
+
+                    New stories waiting to be discovered
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="cta">
+
+        <h2>
+            Ready to Find Your Next Book?
+        </h2>
+
+        <p>
+            Explore our collection and discover a story you'll love.
+        </p>
+
+        <a href="index.html">
+            Explore Our Books →
+        </a>
+
+    </section>
+
+    <div class="back-home">
+
+        <a href="index.html">
+            ← Back to Home
+        </a>
+
+    </div>
+
+    <footer>
+
+        <p>
+            <strong>Online Books</strong> • Discover. Read. Enjoy.
+        </p>
+
+    </footer>
+</body>
+
+</html>

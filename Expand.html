@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harry Potter Collection - Online Books</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(135deg, #f4f0e8, #eef0f8 45%, #e9e4f2);
+            color: #172033;
+            line-height: 1.6;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            gap: 45px;
+            padding: 18px 30px;
+            background: rgba(20, 25, 48, .94);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(212, 175, 55, .35);
+            box-shadow: 0 4px 20px rgba(20, 20, 40, .15);
+        }
+
+        nav a {
+            position: relative;
+            color: #e5e7eb;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            padding: 6px 0;
+            transition: .25s;
+        }
+
+        nav a:hover {
+            color: #d4af37;
+        }
+
+        nav a::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background: #d4af37;
+            border-radius: 10px;
+            transform: translateX(-50%);
+            transition: .25s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 50px 20px 35px;
+        }
+
+        .hero-label {
+            display: inline-block;
+            color: #8b6914;
+            background: #f5e8b5;
+            padding: 7px 15px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            border: 1px solid rgba(139, 105, 20, .2);
+        }
+
+        .hero h1 {
+            font-size: clamp(32px, 5vw, 54px);
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            color: #171b35;
+            margin-bottom: 10px;
+        }
+
+        .hero h1 span {
+            color: #8b6914;
+        }
+
+        .hero p {
+            max-width: 650px;
+            margin: auto;
+            color: #5b6175;
+            font-size: 17px;
+        }
+
+        .books {
+            width: min(1250px, 92%);
+            margin: 20px auto 50px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .small-title {
+            color: #8b6914;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .section-header h2 {
+            font-size: 34px;
+            color: #171b35;
+        }
+
+        .section-header p {
+            color: #5b6175;
+            margin-top: 5px;
+        }
+
+        .book-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+        }
+
+        .book {
+            display: flex;
+            flex-direction: column;
+            background: rgba(255, 255, 255, .94);
+            border: 1px solid #ded9cc;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(35, 30, 60, .09);
+            transition: .3s;
+        }
+
+        .book:hover {
+            transform: translateY(-8px);
+            border-color: #d4af37;
+            box-shadow: 0 18px 40px rgba(35, 30, 60, .16);
+        }
+
+        .book-image {
+            padding: 15px;
+            background: linear-gradient(135deg, #e9e5dc, #e4e5ee);
+        }
+
+        .book img {
+            display: block;
+            width: 100%;
+            height: 310px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(15, 23, 42, .18);
+            transition: .3s;
+        }
+
+        .book:hover img {
+            transform: scale(1.025);
+        }
+
+        .book-content {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            padding: 18px;
+        }
+
+        .book h3 {
+            color: #171b35;
+            font-size: 19px;
+            margin-bottom: 3px;
+        }
+
+        .book-title {
+            color: #6b6175;
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+
+        .book-desc {
+            color: #62697a;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 18px;
+            flex-grow: 1;
+        }
+
+        .buy-button {
+            display: block;
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: 9px;
+            background: linear-gradient(135deg, #26345f, #40568f);
+            color: #fff;
+            font-size: 14px;
+            font-weight: 700;
+            text-align: center;
+            text-decoration: none;
+            box-shadow: 0 6px 15px rgba(38, 52, 95, .22);
+            transition: .2s;
+        }
+
+        .buy-button:hover {
+            transform: translateY(-2px);
+            background: linear-gradient(135deg, #8b6914, #b38b22);
+            box-shadow: 0 9px 20px rgba(139, 105, 20, .25);
+        }
+
+        .back-button {
+            display: block;
+            width: 220px;
+            margin: 0 auto 70px;
+            padding: 12px 16px;
+            border: 2px solid #8b6914;
+            border-radius: 9px;
+            color: #8b6914;
+            text-align: center;
+            text-decoration: none;
+            font-weight: 700;
+            transition: .2s;
+        }
+
+        .back-button:hover {
+            background: #8b6914;
+            color: #fff;
+        }
+
+        footer {
+            background: #141930;
+            color: #aeb3c3;
+            text-align: center;
+            padding: 25px 20px;
+            font-size: 13px;
+            border-top: 1px solid rgba(212, 175, 55, .3);
+        }
+
+        footer strong {
+            color: #d4af37;
+        }
+
+        @media (max-width:700px) {
+            nav {
+                gap: 20px;
+                padding: 15px;
+            }
+
+            nav a {
+                font-size: 13px;
+            }
+
+            .hero {
+                padding-top: 40px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            .section-header h2 {
+                font-size: 28px;
+            }
+        }
+
+        @media (max-width:450px) {
+            nav {
+                gap: 13px;
+            }
+
+            nav a {
+                font-size: 12px;
+            }
+
+            .book img {
+                height: 350px;
+            }
+
+            .back-button {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="books.html">Books</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="categories.html">Categories</a>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-label">Harry Potter Collection</div>
+        <h1>Explore All <span>7 Books</span></h1>
+        <p>Discover the complete Harry Potter collection, from Harry's first adventure to the final chapter.</p>
+    </section>
+
+    <section class="books">
+        <div class="section-header">
+            <div class="small-title">The Complete Collection</div>
+            <h2>Harry Potter Books</h2>
+            <p>Explore all seven books in the series.</p>
+        </div>
+
+        <div class="book-grid">
+
+            <div class="book">
+                <div class="book-image">
+                    <img src="H1.jpg" alt="Harry Potter and the Philosopher's Stone">
+                </div>
+                <div class="book-content">
+                    <h3>Harry Potter 1</h3>
+                    <p class="book-title">Harry Potter and the Philosopher's Stone</p>
+                    <p class="book-desc">Harry discovers the magical world and begins his journey at Hogwarts.</p>
+                    <a href="#" class="buy-button">Buy Now — $3.99</a>
+                </div>
+            </div>
+
+            <div class="book">
+                <div class="book-image">
+                    <img src="H2.jpg" alt="Harry Potter and the Chamber of Secrets">
+                </div>
+                <div class="book-content">
+                    <h3>Harry Potter 2</h3>
+                    <p class="book-title">Harry Potter and the Chamber of Secrets</p>
+                    <p class="book-desc">Harry returns to Hogwarts and faces a mysterious danger hidden within the
+                        school.</p>
+                    <a href="#" class="buy-button">Buy Now — $3.99</a>
+                </div>
+            </div>
+
+            <div class="book">
+                <div class="book-image">
+                    <img src="H3.jpg" alt="Harry Potter and the Prisoner of Azkaban">
+                </div>
+                <div class="book-content">
+                    <h3>Harry Potter 3</h3>
+                    <p class="book-title">Harry Potter and the Prisoner of Azkaban</p>
+                    <p class="book-desc">Harry learns more about his past when a dangerous prisoner escapes from
+                        Azkaban.</p>
+                    <a href="#" class="buy-button">Buy Now — $3.99</a>
+                </div>
+            </div>
+
+            <div class="book">
+                <div class="book-image">
+                    <img src="H4.jpg" alt="Harry Potter and the Goblet of Fire">
+                </div>
+                <div class="book-content">
+                    <h3>Harry Potter 4</h3>
+                    <p class="book-title">Harry Potter and the Goblet of Fire</p>
+                    <p class="book-desc">Harry is unexpectedly chosen to compete in the dangerous Triwizard Tournament.
+                    </p>
+                    <a href="#" class="buy-button">Buy Now — $3.99</a>
+                </div>
+            </div>
+
+            <div class="book">
+                <div class="book-image">
+                    <img src="H5.jpg" alt="Harry Potter and the Order of the Phoenix">
+                </div>
+                <div class="book-content">
+                    <h3>Harry Potter 5</h3>
+                    <p class="book-title">Harry Potter and the Order of the Phoenix</p>
+                    <p class="book-desc">Harry and his friends prepare for the growing threat of Voldemort's return.</p>
+                    <a href="#" class="buy-button">Buy Now — $3.99</a>
+                </div>
+            </div>
+
+            <div class="book">
+                <div class="book-image">
+                    <img src="H6.jpg" alt="Harry Potter and the Half-Blood Prince">
+                </div>
+                <div class="book-content">
+                    <h3>Harry Potter 6</h3>
+                    <p class="book-title">Harry Potter and the Half-Blood Prince</p>
+                    <p class="book-desc">Harry discovers important secrets about Voldemort and prepares for the final
+                        battle.</p>
+                    <a href="#" class="buy-button">Buy Now — $3.99</a>
+                </div>
+            </div>
+
+            <div class="book">
+                <div class="book-image">
+                    <img src="H7.jpg" alt="Harry Potter and the Deathly Hallows">
+                </div>
+                <div class="book-content">
+                    <h3>Harry Potter 7</h3>
+                    <p class="book-title">Harry Potter and the Deathly Hallows</p>
+                    <p class="book-desc">Harry and his friends face their greatest challenge as the final battle
+                        approaches.</p>
+                    <a href="#" class="buy-button">Buy Now — $3.99</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <a href="index.html" class="back-button">← Back to Home</a>
+
+    <footer>
+        <p><strong>Online Books</strong> • Discover. Read. Enjoy.</p>
+    </footer>
+
+</body>
+
+</html>

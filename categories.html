@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Online Books - Categories</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f6f8fc;
+            color: #172033;
+            line-height: 1.6;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            gap: 45px;
+            padding: 18px 30px;
+            background: rgba(255, 255, 255, .94);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid #e7ebf2;
+            box-shadow: 0 4px 20px rgba(20, 30, 60, .06);
+        }
+
+        nav a {
+            position: relative;
+            color: #475569;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            padding: 6px 0;
+            transition: .25s;
+        }
+
+        nav a:hover {
+            color: #2563eb;
+        }
+
+        nav a::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background: #2563eb;
+            border-radius: 10px;
+            transform: translateX(-50%);
+            transition: .25s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 65px 20px 45px;
+        }
+
+        .hero-label {
+            display: inline-block;
+            color: #2563eb;
+            background: #eaf1ff;
+            padding: 7px 15px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 {
+            font-size: clamp(35px, 5vw, 54px);
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            color: #111827;
+            margin-bottom: 12px;
+        }
+
+        .hero h1 span {
+            color: #2563eb;
+        }
+
+        .hero p {
+            max-width: 650px;
+            margin: auto;
+            color: #64748b;
+            font-size: 17px;
+        }
+
+        .categories-section {
+            width: min(1150px, 92%);
+            margin: auto;
+            padding-bottom: 75px;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .section-heading h2 {
+            color: #111827;
+            font-size: 30px;
+            margin-bottom: 5px;
+        }
+
+        .section-heading p {
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .category-card {
+            position: relative;
+            min-height: 230px;
+            padding: 28px;
+            background: #fff;
+            border: 1px solid #e5eaf2;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(30, 41, 59, .06);
+            transition: .3s;
+        }
+
+        .category-card::before {
+            content: "";
+            position: absolute;
+            width: 130px;
+            height: 130px;
+            right: -45px;
+            top: -45px;
+            background: #eaf1ff;
+            border-radius: 50%;
+            transition: .35s;
+        }
+
+        .category-card:hover {
+            transform: translateY(-8px);
+            border-color: #cbdcff;
+            box-shadow: 0 18px 40px rgba(30, 41, 59, .12);
+        }
+
+        .category-card:hover::before {
+            transform: scale(1.4);
+        }
+
+        .category-icon {
+            position: relative;
+            width: 58px;
+            height: 58px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #2563eb, #3b82f6);
+            color: white;
+            border-radius: 15px;
+            font-size: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 18px rgba(37, 99, 235, .2);
+        }
+
+        .category-card h3 {
+            position: relative;
+            color: #111827;
+            font-size: 20px;
+            margin-bottom: 7px;
+        }
+
+        .category-card p {
+            position: relative;
+            color: #64748b;
+            font-size: 13px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .book-count {
+            position: relative;
+            display: inline-block;
+            color: #2563eb;
+            background: #f0f5ff;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .featured {
+            margin-top: 25px;
+            padding: 30px;
+            border-radius: 18px;
+            background: linear-gradient(135deg, #172554, #2563eb);
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 25px;
+            box-shadow: 0 15px 35px rgba(37, 99, 235, .2);
+        }
+
+        .featured h2 {
+            font-size: 25px;
+            margin-bottom: 5px;
+        }
+
+        .featured p {
+            color: #dbeafe;
+            font-size: 14px;
+        }
+
+        .browse-button {
+            flex-shrink: 0;
+            display: inline-block;
+            padding: 12px 20px;
+            border-radius: 9px;
+            background: white;
+            color: #2563eb;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 700;
+            transition: .25s;
+        }
+
+        .browse-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, .2);
+        }
+
+        .back-home {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .back-home a {
+            color: #2563eb;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .back-home a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            background: #111827;
+            color: #94a3b8;
+            text-align: center;
+            padding: 25px 20px;
+            font-size: 13px;
+        }
+
+        footer strong {
+            color: #fff;
+        }
+
+        @media (max-width: 850px) {
+
+            .category-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .featured {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            nav {
+                gap: 20px;
+                padding: 15px;
+            }
+
+            nav a {
+                font-size: 13px;
+            }
+
+            .hero {
+                padding-top: 45px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            .category-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 450px) {
+
+            nav {
+                gap: 13px;
+            }
+
+            nav a {
+                font-size: 12px;
+            }
+
+            .category-card {
+                min-height: 210px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+
+        <a href="index.html">Home</a>
+        <a href="books.html">Books</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="categories.html">Categories</a>
+
+    </nav>
+
+    <section class="hero">
+
+        <div class="hero-label">
+            Explore Our Collection
+        </div>
+
+        <h1>
+            Find Your <span>Perfect Genre</span>
+        </h1>
+
+        <p>
+            From magical adventures to timeless classics, discover books
+            that match your interests and imagination.
+        </p>
+
+    </section>
+
+    <section class="categories-section">
+
+        <div class="section-heading">
+
+            <h2>Browse Categories</h2>
+
+            <p>
+                Explore our collection by genre.
+            </p>
+
+        </div>
+
+        <div class="category-grid">
+
+            <div class="category-card">
+
+                <div class="category-icon">
+                    ⚔
+                </div>
+
+                <h3>Fantasy</h3>
+
+                <p>
+                    Enter magical worlds filled with heroes, mythical creatures,
+                    ancient powers, and unforgettable adventures.
+                </p>
+
+                <span class="book-count">
+                    24 Books
+                </span>
+
+            </div>
+
+            <div class="category-card">
+
+                <div class="category-icon">
+                    🚀
+                </div>
+
+                <h3>Science Fiction</h3>
+
+                <p>
+                    Explore distant planets, futuristic technology, space
+                    adventures, and incredible possibilities.
+                </p>
+
+                <span class="book-count">
+                    18 Books
+                </span>
+
+            </div>
+
+            <div class="category-card">
+
+                <div class="category-icon">
+                    📖
+                </div>
+
+                <h3>Classics</h3>
+
+                <p>
+                    Discover timeless stories and legendary works that have
+                    influenced generations of readers.
+                </p>
+
+                <span class="book-count">
+                    31 Books
+                </span>
+
+            </div>
+
+            <div class="category-card">
+
+                <div class="category-icon">
+                    🕵
+                </div>
+
+                <h3>Mystery</h3>
+
+                <p>
+                    Follow clever detectives, solve mysterious cases, and
+                    uncover secrets hidden between the pages.
+                </p>
+
+                <span class="book-count">
+                    16 Books
+                </span>
+
+            </div>
+
+            <div class="category-card">
+
+                <div class="category-icon">
+                    ❤️
+                </div>
+
+                <h3>Romance</h3>
+
+                <p>
+                    Experience unforgettable relationships, emotional journeys,
+                    and stories about love and connection.
+                </p>
+
+                <span class="book-count">
+                    22 Books
+                </span>
+
+            </div>
+
+            <div class="category-card">
+
+                <div class="category-icon">
+                    😄
+                </div>
+
+                <h3>Comedy</h3>
+
+                <p>
+                    Enjoy hilarious characters, funny situations, and light-hearted
+                    stories guaranteed to keep you entertained.
+                </p>
+
+                <span class="book-count">
+                    15 Books
+                </span>
+
+            </div>
+
+            <div class="category-card">
+
+                <div class="category-icon">
+                    🏆
+                </div>
+
+                <h3>Adventure</h3>
+
+                <p>
+                    Join unforgettable characters on dangerous journeys,
+                    exciting quests, and incredible discoveries.
+                </p>
+
+                <span class="book-count">
+                    27 Books
+                </span>
+
+            </div>
+
+            <div class="category-card">
+
+                <div class="category-icon">
+                    🧠
+                </div>
+
+                <h3>Non-Fiction</h3>
+
+                <p>
+                    Learn about real people, important events, science,
+                    history, and fascinating ideas from around the world.
+                </p>
+
+                <span class="book-count">
+                    20 Books
+                </span>
+
+            </div>
+
+            <div class="category-card">
+
+                <div class="category-icon">
+                    👻
+                </div>
+
+                <h3>Horror</h3>
+
+                <p>
+                    Enter dark and mysterious worlds filled with suspense,
+                    supernatural events, and terrifying stories.
+                </p>
+
+                <span class="book-count">
+                    13 Books
+                </span>
+
+            </div>
+
+        </div>
+
+        <div class="featured">
+
+            <div>
+
+                <h2>Not Sure What to Read?</h2>
+
+                <p>
+                    Browse our popular collection and discover your next
+                    great read.
+                </p>
+
+            </div>
+
+            <a href="index.html" class="browse-button">
+                Browse Popular Books →
+            </a>
+
+        </div>
+
+    </section>
+
+    <div class="back-home">
+
+        <a href="index.html">
+            ← Back to Home
+        </a>
+
+    </div>
+
+    <footer>
+
+        <p>
+            <strong>Online Books</strong> • Discover. Read. Enjoy.
+        </p>
+
+    </footer>
+
+</body>
+
+</html>

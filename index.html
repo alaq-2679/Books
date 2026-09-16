@@ -1,235 +1,701 @@
 <!DOCTYPE html>
 
-<head>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Online Books - Home</title>
 
     <style>
-        body {
-
-            font-family: Arial;
-
+        * {
+            box-sizing: border-box;
             margin: 0;
+            padding: 0;
+        }
 
-            background: #f4f4f4;
+        html {
+            scroll-behavior: smooth;
+        }
 
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f6f8fc;
+            color: #172033;
+            line-height: 1.6;
         }
 
         nav {
-
-            background: black;
-
-            padding: 15px;
-
-            text-align: center;
-
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            gap: 45px;
+            padding: 18px 30px;
+            background: rgba(255, 255, 255, .92);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid #e7ebf2;
+            box-shadow: 0 4px 20px rgba(20, 30, 60, .06);
         }
 
         nav a {
-
-            color: white;
-
-            margin: 15px;
-
+            position: relative;
+            color: #475569;
             text-decoration: none;
-
+            font-size: 15px;
+            font-weight: 600;
+            padding: 6px 0;
+            transition: .25s;
         }
 
         nav a:hover {
-
-            color: yellow;
-
+            color: #2563eb;
         }
 
-        /* Slider */
+        nav a::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background: #2563eb;
+            border-radius: 10px;
+            transform: translateX(-50%);
+            transition: .25s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 50px 20px 25px;
+        }
+
+        .hero-label {
+            display: inline-block;
+            color: #2563eb;
+            background: #eaf1ff;
+            padding: 7px 15px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 {
+            font-size: clamp(32px, 5vw, 54px);
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            color: #111827;
+            margin-bottom: 10px;
+        }
+
+        .hero h1 span {
+            color: #2563eb;
+        }
+
+        .hero p {
+            max-width: 600px;
+            margin: auto;
+            color: #64748b;
+            font-size: 17px;
+        }
 
         .slider {
-
-            width: 60%;
-
-            height: 300px;
-
-            margin: 20px auto;
-
+            width: min(1100px, 90%);
+            height: 430px;
+            margin: 35px auto 65px;
             overflow: hidden;
-
-            border-radius: 10px;
-
+            border-radius: 22px;
+            position: relative;
+            background: #0f172a;
+            box-shadow: 0 20px 50px rgba(15, 23, 42, .18);
         }
 
         .slides {
-
             display: flex;
-
-            width: 600%;
-
-            animation: slide 12s infinite;
-
+            width: 500%;
+            height: 100%;
+            animation: slide 25s infinite ease-in-out;
         }
 
-        .slides img {
+        .slide-item {
+            position: relative;
+            width: 20%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
 
-            width: 100%;
+        .slide-item::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, rgba(15, 23, 42, .45), transparent 50%, rgba(15, 23, 42, .35));
+            z-index: 2;
+        }
 
-            height: 300px;
+        .slide-bg {
+            position: absolute;
+            width: 120%;
+            height: 120%;
+            object-fit: cover;
+            filter: blur(25px) brightness(.35);
+            transform: scale(1.1);
+            z-index: 1;
+        }
 
+        .slide-img {
+            position: relative;
+            height: 88%;
+            max-width: 65%;
+            object-fit: contain;
+            z-index: 3;
+            border-radius: 8px;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, .5);
+            transition: .4s;
+        }
+
+        .slide-item:hover .slide-img {
+            transform: scale(1.03);
         }
 
         @keyframes slide {
 
-            0% {
-
-                transform: translateX(0%);
-
-            }
-
+            0%,
             16% {
-
-                transform: translateX(0%);
-
+                transform: translateX(0);
             }
 
-            20% {
-
-                transform: translateX(-100%);
-
-            }
-
+            20%,
             36% {
-
-                transform: translateX(-100%);
-
+                transform: translateX(-20%);
             }
 
-            40% {
-
-                transform: translateX(-200%);
-
-            }
-
+            40%,
             56% {
-
-                transform: translateX(-200%);
-
+                transform: translateX(-40%);
             }
 
-            60% {
-
-                transform: translateX(-300%);
-
-            }
-
+            60%,
             76% {
-
-                transform: translateX(-300%);
-
+                transform: translateX(-60%);
             }
 
-            80% {
-
-                transform: translateX(-400%);
-
-            }
-
+            80%,
             96% {
-
-                transform: translateX(-400%);
-
+                transform: translateX(-80%);
             }
 
             100% {
-
-                transform: translateX(0%);
-
+                transform: translateX(0);
             }
-
         }
 
-        /* Cards */
-
         .cards {
+            width: min(1250px, 92%);
+            margin: auto;
+            padding-bottom: 70px;
+        }
 
+        .section-header {
             text-align: center;
+            margin-bottom: 30px;
+        }
 
-            padding: 20px;
+        .small-title {
+            color: #2563eb;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
 
+        .section-header h2 {
+            font-size: 34px;
+            color: #111827;
+        }
+
+        .section-header p {
+            color: #64748b;
+            margin-top: 5px;
+        }
+
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
         }
 
         .card {
+            display: flex;
+            flex-direction: column;
+            background: #fff;
+            border: 1px solid #e8edf5;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(30, 41, 59, .05);
+            transition: .3s;
+        }
 
-            display: inline-block;
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: #d5e2ff;
+            box-shadow: 0 18px 40px rgba(30, 41, 59, .12);
+        }
 
-            width: 250px;
-
-            margin: 15px;
-
+        .card-image {
             padding: 15px;
-
-            background: white;
-
-            box-shadow: 0 0 10px gray;
-
-            border-radius: 10px;
-
+            background: linear-gradient(135deg, #f1f5f9, #e8eef8);
         }
 
         .card img {
-
+            display: block;
             width: 100%;
+            height: 310px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(15, 23, 42, .12);
+            transition: .3s;
+        }
 
-            height: 180px;
+        .card:hover img {
+            transform: scale(1.025);
+        }
 
-            border-radius: 8px;
-
+        .card-content {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            padding: 18px;
         }
 
         .card h3 {
-
-            margin: 10px 0 5px;
-
+            color: #111827;
+            font-size: 19px;
+            margin-bottom: 3px;
         }
 
         .author {
+            color: #64748b;
+            font-size: 13px;
+            margin-bottom: 7px;
+        }
 
-            color: gray;
+        .rating {
+            margin-bottom: 10px;
+            height: 22px;
+        }
 
-            font-size: 14px;
+        .stars {
+            position: relative;
+            display: inline-block;
+            font-size: 20px;
+            line-height: 1;
+            letter-spacing: 1px;
+        }
 
+        .stars::before {
+            content: "★★★★★";
+            color: #d7dce5;
+        }
+
+        .stars::after {
+            content: "★★★★★";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: var(--rating);
+            overflow: hidden;
+            white-space: nowrap;
+            color: #f5b301;
         }
 
         .desc {
-
+            color: #64748b;
             font-size: 14px;
-
-            margin: 10px 0;
-
+            line-height: 1.6;
+            margin-bottom: 18px;
+            flex-grow: 1;
         }
 
-        button {
-
-            background: #007BFF;
-
-            color: white;
-
+        button,
+        .expand-button {
+            width: 100%;
             border: none;
-
-            padding: 10px;
-
-            border-radius: 5px;
-
+            padding: 12px 16px;
+            border-radius: 9px;
+            background: linear-gradient(135deg, #2563eb, #3b82f6);
+            color: #fff;
+            font-size: 14px;
+            font-weight: 700;
+            text-align: center;
+            text-decoration: none;
             cursor: pointer;
-
+            box-shadow: 0 6px 15px rgba(37, 99, 235, .2);
+            transition: .2s;
         }
 
-        button:hover {
+        .expand-button {
+            display: block;
+        }
 
-            background: #0056b3;
+        button:hover,
+        .expand-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 9px 20px rgba(37, 99, 235, .3);
+        }
 
+        footer {
+            background: #111827;
+            color: #94a3b8;
+            text-align: center;
+            padding: 25px 20px;
+            font-size: 13px;
+        }
+
+        footer strong {
+            color: #fff;
+        }
+
+        @media (max-width:700px) {
+
+            nav {
+                gap: 20px;
+                padding: 15px;
+            }
+
+            nav a {
+                font-size: 13px;
+            }
+
+            .hero {
+                padding-top: 40px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            .slider {
+                height: 330px;
+                width: 94%;
+            }
+
+            .slide-img {
+                height: 82%;
+                max-width: 75%;
+            }
+
+            .section-header h2 {
+                font-size: 28px;
+            }
+        }
+
+        @media (max-width:450px) {
+
+            nav {
+                gap: 13px;
+            }
+
+            nav a {
+                font-size: 12px;
+            }
+
+            .slider {
+                height: 280px;
+            }
+
+            .card img {
+                height: 350px;
+            }
         }
     </style>
-
 </head>
 
 <body>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="books.html">Books</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="categories.html">Categories</a>
+    </nav>
+
+    <section class="hero">
+
+        <div class="hero-label">
+            Premium Book Collection
+        </div>
+
+        <h1>
+            Discover Your Next <span>Great Read</span>
+        </h1>
+
+        <p>
+            Explore timeless classics, bestselling adventures, and unforgettable stories all in one place.
+        </p>
+
+    </section>
+
+    <div class="slider">
+
+        <div class="slides">
+
+            <div class="slide-item">
+                <img class="slide-bg" src="Dav.jpg" alt="">
+                <img class="slide-img" src="Dav.jpg" alt="David Copperfield">
+            </div>
+
+            <div class="slide-item">
+                <img class="slide-bg" src="Dune.jpg" alt="">
+                <img class="slide-img" src="Dune.jpg" alt="Dune">
+            </div>
+
+            <div class="slide-item">
+                <img class="slide-bg" src="H1.jpg" alt="">
+                <img class="slide-img" src="H1.jpg" alt="Harry Potter">
+            </div>
+
+            <div class="slide-item">
+                <img class="slide-bg" src="Lord.jpg" alt="">
+                <img class="slide-img" src="Lord.jpg" alt="Lord of the Rings">
+            </div>
+
+            <div class="slide-item">
+                <img class="slide-bg" src="O1.jpeg" alt="">
+                <img class="slide-img" src="O1.jpeg" alt="Heroes of Olympus">
+            </div>
+
+        </div>
+
+    </div>
+
+    <section class="cards">
+
+        <div class="section-header">
+
+            <div class="small-title">
+                Browse Our Collection
+            </div>
+
+            <h2>Popular Books</h2>
+
+            <p>
+                Hand-picked stories readers love.
+            </p>
+
+        </div>
+
+        <div class="card-container">
+
+            <div class="card">
+
+                <div class="card-image">
+                    <img src="Dav.jpg" alt="David Copperfield">
+                </div>
+
+                <div class="card-content">
+
+                    <h3>David Copperfield</h3>
+
+                    <p class="author">
+                        by Charles Dickens
+                    </p>
+
+                    <p class="desc">
+                        Follows the life of an orphan from his difficult childhood to his eventual success
+                        as a famous author.
+                    </p>
+
+                    <button>
+                        Buy Now — $3.99
+                    </button>
+
+                </div>
+
+            </div>
+
+            <div class="card">
+
+                <div class="card-image">
+                    <img src="Dune.jpg" alt="Dune">
+                </div>
+
+                <div class="card-content">
+
+                    <h3>Dune</h3>
+
+                    <p class="author">
+                        by Frank Herbert
+                    </p>
+
+                    <div class="rating">
+                        <span class="stars" style="--rating: 92%;"></span>
+                    </div>
+
+                    <p class="desc">
+                        A science fiction epic set in a distant future where a young man becomes connected
+                        to the fate of a desert planet.
+                    </p>
+
+                    <button>
+                        Buy Now — $3.99
+                    </button>
+
+                </div>
+
+            </div>
+
+            <div class="card harry-card">
+
+                <div class="card-image">
+                    <img src="H1.jpg" alt="Harry Potter">
+                </div>
+
+                <div class="card-content">
+
+                    <h3>Harry Potter</h3>
+
+                    <p class="author">
+                        by J.K. Rowling
+                    </p>
+
+                    <div class="rating">
+                        <span class="stars" style="--rating: 94%;"></span>
+                    </div>
+
+                    <p class="desc">
+                        A young wizard discovers his magical heritage and begins his journey at a school of
+                        witchcraft and wizardry.
+                    </p>
+
+                    <a href="Expand.html" class="expand-button">
+                        View All 7 Books
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="card">
+
+                <div class="card-image">
+                    <img src="O1.jpg" alt="Heroes of Olympus">
+                </div>
+
+                <div class="card-content">
+
+                    <h3>Heroes of Olympus</h3>
+
+                    <p class="author">
+                        by Rick Riordan
+                    </p>
+
+                    <div class="rating">
+                        <span class="stars" style="--rating: 92%;"></span>
+                    </div>
+
+                    <p class="desc">
+                        A thrilling fantasy series where demigods from Greek and Roman mythology join forces
+                        to face powerful enemies and save the world.
+                    </p>
+
+                    <button>
+                        Buy Now — $3.99
+                    </button>
+
+                </div>
+
+            </div>
+
+            <div class="card">
+
+                <div class="card-image">
+                    <img src="Lord.jpg" alt="Lord of the Rings">
+                </div>
+
+                <div class="card-content">
+
+                    <h3>Lord of the Rings</h3>
+
+                    <p class="author">
+                        by J.R.R. Tolkien
+                    </p>
+
+                    <div class="rating">
+                        <span class="stars" style="--rating: 90%;"></span>
+                    </div>
+
+                    <p class="desc">
+                        A legendary fantasy adventure following a hobbit and his companions on a dangerous
+                        journey to destroy a powerful ring.
+                    </p>
+
+                    <a href="Expand-L.html" class="expand-button">
+                        View All 3 Books
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="card">
+
+                <div class="card-image">
+                    <img src="W1.jpg" alt="Wild Dark Shore">
+                </div>
+
+                <div class="card-content">
+
+                    <h3>Wild Dark Shore</h3>
+
+                    <p class="author">
+                        by Charlotte McConaghy
+                    </p>
+
+                    <div class="rating">
+                        <span class="stars" style="--rating: 91%;"></span>
+                    </div>
+
+                    <p class="desc">
+                        A gripping story of family, survival, and nature set against the wild and isolated
+                        landscape of a remote island.
+                    </p>
+
+                    <button>
+                        Buy Now — $3.99
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <footer>
+
+        <p>
+            <strong>Online Books</strong> • Discover. Read. Enjoy.
+        </p>
+
+    </footer>
 
 </body>
+
+</html>

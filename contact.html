@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Online Books - Contact</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f6f8fc;
+            color: #172033;
+            line-height: 1.6;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            gap: 45px;
+            padding: 18px 30px;
+            background: rgba(255, 255, 255, .94);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid #e7ebf2;
+            box-shadow: 0 4px 20px rgba(20, 30, 60, .06);
+        }
+
+        nav a {
+            position: relative;
+            color: #475569;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            padding: 6px 0;
+            transition: .25s;
+        }
+
+        nav a:hover {
+            color: #2563eb;
+        }
+
+        nav a::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background: #2563eb;
+            border-radius: 10px;
+            transform: translateX(-50%);
+            transition: .25s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 65px 20px 45px;
+        }
+
+        .hero-label {
+            display: inline-block;
+            color: #2563eb;
+            background: #eaf1ff;
+            padding: 7px 15px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 {
+            font-size: clamp(35px, 5vw, 54px);
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            color: #111827;
+            margin-bottom: 12px;
+        }
+
+        .hero h1 span {
+            color: #2563eb;
+        }
+
+        .hero p {
+            max-width: 620px;
+            margin: auto;
+            color: #64748b;
+            font-size: 17px;
+        }
+
+        .contact-section {
+            width: min(1100px, 92%);
+            margin: 0 auto;
+            padding-bottom: 75px;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1.35fr;
+            gap: 25px;
+        }
+
+        .contact-info,
+        .contact-form {
+            background: #ffffff;
+            border: 1px solid #e5eaf2;
+            border-radius: 18px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(30, 41, 59, .06);
+        }
+
+        .contact-info h2,
+        .contact-form h2 {
+            color: #111827;
+            font-size: 25px;
+            margin-bottom: 8px;
+        }
+
+        .contact-info>p,
+        .contact-form>p {
+            color: #64748b;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 22px;
+        }
+
+        .info-icon {
+            width: 43px;
+            height: 43px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #eaf1ff;
+            color: #2563eb;
+            border-radius: 12px;
+            font-size: 19px;
+        }
+
+        .info-item h3 {
+            color: #111827;
+            font-size: 15px;
+            margin-bottom: 2px;
+        }
+
+        .info-item p {
+            color: #64748b;
+            font-size: 13px;
+        }
+
+        .socials {
+            display: flex;
+            gap: 10px;
+            margin-top: 25px;
+        }
+
+        .socials a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: #f1f5f9;
+            color: #475569;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 700;
+            transition: .25s;
+        }
+
+        .socials a:hover {
+            background: #2563eb;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 17px;
+        }
+
+        label {
+            display: block;
+            color: #334155;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 7px;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            border: 1px solid #dce2ec;
+            border-radius: 10px;
+            padding: 12px 14px;
+            background: #f8fafc;
+            color: #172033;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            outline: none;
+            transition: .25s;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            border-color: #2563eb;
+            background: #fff;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, .1);
+        }
+
+        textarea {
+            height: 130px;
+            resize: vertical;
+        }
+
+        .send-button {
+            width: 100%;
+            border: none;
+            padding: 13px 18px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #2563eb, #3b82f6);
+            color: #fff;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 7px 18px rgba(37, 99, 235, .2);
+            transition: .25s;
+        }
+
+        .send-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 22px rgba(37, 99, 235, .3);
+        }
+
+        .back-home {
+            display: block;
+            width: min(1100px, 92%);
+            margin: 0 auto 60px;
+            text-align: center;
+        }
+
+        .back-home a {
+            color: #2563eb;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .back-home a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            background: #111827;
+            color: #94a3b8;
+            text-align: center;
+            padding: 25px 20px;
+            font-size: 13px;
+        }
+
+        footer strong {
+            color: #fff;
+        }
+
+        @media (max-width: 750px) {
+
+            nav {
+                gap: 20px;
+                padding: 15px;
+            }
+
+            nav a {
+                font-size: 13px;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding-top: 45px;
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            nav {
+                gap: 13px;
+            }
+
+            nav a {
+                font-size: 12px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            .contact-info,
+            .contact-form {
+                padding: 22px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="books.html">Books</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="categories.html">Categories</a>
+    </nav>
+
+    <section class="hero">
+
+        <div class="hero-label">
+            Get In Touch
+        </div>
+
+        <h1>
+            Contact <span>Our Team</span>
+        </h1>
+
+        <p>
+            Have a question about a book, your order, or our collection?
+            We'd love to hear from you.
+        </p>
+
+    </section>
+
+    <section class="contact-section">
+
+        <div class="contact-container">
+
+            <div class="contact-info">
+
+                <h2>Let's Talk</h2>
+
+                <p>
+                    Our friendly team is here to help with anything you need.
+                </p>
+
+                <div class="info-item">
+
+                    <div class="info-icon">
+                        ✉
+                    </div>
+
+                    <div>
+                        <h3>Email</h3>
+                        <p>hello@novelnestbooks.com</p>
+                    </div>
+
+                </div>
+
+                <div class="info-item">
+
+                    <div class="info-icon">
+                        ☎
+                    </div>
+
+                    <div>
+                        <h3>Phone</h3>
+                        <p>+254 700 123 456</p>
+                    </div>
+
+                </div>
+
+                <div class="info-item">
+
+                    <div class="info-icon">
+                        📍
+                    </div>
+
+                    <div>
+                        <h3>Address</h3>
+                        <p>24 Book Avenue, Nairobi, Kenya</p>
+                    </div>
+
+                </div>
+
+                <div class="info-item">
+
+                    <div class="info-icon">
+                        ◷
+                    </div>
+
+                    <div>
+                        <h3>Opening Hours</h3>
+                        <p>Monday – Saturday: 9:00 AM – 6:00 PM</p>
+                    </div>
+
+                </div>
+
+                <div class="socials">
+
+                    <a href="#" title="Instagram">IG</a>
+                    <a href="#" title="Facebook">FB</a>
+                    <a href="#" title="X">X</a>
+                    <a href="#" title="TikTok">TK</a>
+
+                </div>
+
+            </div>
+
+            <div class="contact-form">
+
+                <h2>Send Us a Message</h2>
+
+                <p>
+                    Fill in the form below and our team will get back to you.
+                </p>
+
+                <form>
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+
+                            <label for="name">
+                                Full Name
+                            </label>
+
+                            <input type="text" id="name" placeholder="Your name" required>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label for="email">
+                                Email Address
+                            </label>
+
+                            <input type="email" id="email" placeholder="you@example.com" required>
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="subject">
+                            Subject
+                        </label>
+
+                        <select id="subject">
+
+                            <option>General Question</option>
+                            <option>Book Recommendation</option>
+                            <option>Order Support</option>
+                            <option>Book Availability</option>
+                            <option>Other</option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="message">
+                            Message
+                        </label>
+
+                        <textarea id="message" placeholder="Write your message here..." required></textarea>
+
+                    </div>
+
+                    <button type="submit" class="send-button">
+                        Send Message
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <div class="back-home">
+        <a href="index.html">← Back to Home</a>
+    </div>
+
+    <footer>
+
+        <p>
+            <strong>Online Books</strong> • Discover. Read. Enjoy.
+        </p>
+
+    </footer>
+
+</body>
+
+</html>
