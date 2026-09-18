@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Harry Potter Collection - Online Books</title>
+    <title>Heroes of Olympus Collection - Online Books</title>
 
     <style>
         * {
@@ -21,16 +21,13 @@
         body {
             font-family: Arial, Helvetica, sans-serif;
 
-            /* Harry Potter inspired background */
             background:
-                radial-gradient(circle at top, rgba(120, 87, 25, 0.25), transparent 35%),
-                linear-gradient(135deg, #070b18, #11182b 45%, #24151d 100%);
+                radial-gradient(circle at top, rgba(14, 165, 233, 0.25), transparent 35%),
+                linear-gradient(135deg, #061a2b, #0b3045 45%, #163b3b 100%);
 
-            color: #eee6d3;
+            color: #e5f6ff;
             line-height: 1.6;
         }
-
-        /* ================= NAVIGATION ================= */
 
         nav {
             position: sticky;
@@ -43,11 +40,11 @@
 
             padding: 18px 30px;
 
-            background: rgba(7, 11, 24, .96);
+            background: rgba(4, 22, 36, .96);
 
             backdrop-filter: blur(14px);
 
-            border-bottom: 1px solid rgba(212, 175, 55, .5);
+            border-bottom: 1px solid rgba(245, 158, 11, .5);
 
             box-shadow:
                 0 4px 25px rgba(0, 0, 0, .5);
@@ -56,7 +53,7 @@
         nav a {
             position: relative;
 
-            color: #e8dfc7;
+            color: #d9f3ff;
 
             text-decoration: none;
 
@@ -69,7 +66,7 @@
         }
 
         nav a:hover {
-            color: #d4af37;
+            color: #f59e0b;
         }
 
         nav a::after {
@@ -83,7 +80,7 @@
             width: 0;
             height: 2px;
 
-            background: #d4af37;
+            background: #f59e0b;
 
             border-radius: 10px;
 
@@ -96,8 +93,6 @@
             width: 100%;
         }
 
-        /* ================= HERO ================= */
-
         .hero {
             text-align: center;
 
@@ -105,16 +100,16 @@
 
             background:
                 radial-gradient(circle at center,
-                    rgba(212, 175, 55, .12),
+                    rgba(14, 165, 233, .12),
                     transparent 60%);
         }
 
         .hero-label {
             display: inline-block;
 
-            color: #d4af37;
+            color: #f59e0b;
 
-            background: rgba(92, 19, 35, .65);
+            background: rgba(8, 74, 89, .65);
 
             padding: 7px 15px;
 
@@ -129,10 +124,10 @@
 
             margin-bottom: 15px;
 
-            border: 1px solid rgba(212, 175, 55, .5);
+            border: 1px solid rgba(245, 158, 11, .5);
 
             box-shadow:
-                0 0 20px rgba(212, 175, 55, .08);
+                0 0 20px rgba(14, 165, 233, .08);
         }
 
         .hero h1 {
@@ -142,7 +137,7 @@
 
             letter-spacing: -1.5px;
 
-            color: #f1e6c8;
+            color: #e8f8ff;
 
             margin-bottom: 10px;
 
@@ -151,10 +146,10 @@
         }
 
         .hero h1 span {
-            color: #d4af37;
+            color: #f59e0b;
 
             text-shadow:
-                0 0 15px rgba(212, 175, 55, .25);
+                0 0 15px rgba(245, 158, 11, .25);
         }
 
         .hero p {
@@ -162,12 +157,10 @@
 
             margin: auto;
 
-            color: #bdb6a5;
+            color: #a9c8d5;
 
             font-size: 17px;
         }
-
-        /* ================= BOOK SECTION ================= */
 
         .books {
             width: min(1250px, 92%);
@@ -182,7 +175,7 @@
         }
 
         .small-title {
-            color: #d4af37;
+            color: #f59e0b;
 
             font-size: 12px;
 
@@ -198,19 +191,17 @@
         .section-header h2 {
             font-size: 34px;
 
-            color: #f1e6c8;
+            color: #e8f8ff;
 
             text-shadow:
                 0 3px 15px rgba(0, 0, 0, .5);
         }
 
         .section-header p {
-            color: #aaa596;
+            color: #91aebc;
 
             margin-top: 5px;
         }
-
-        /* ================= BOOK GRID ================= */
 
         .book-grid {
             display: grid;
@@ -221,8 +212,6 @@
             gap: 25px;
         }
 
-        /* ================= BOOK CARD ================= */
-
         .book {
             display: flex;
 
@@ -230,10 +219,10 @@
 
             background:
                 linear-gradient(145deg,
-                    rgba(25, 32, 54, .97),
-                    rgba(39, 22, 31, .97));
+                    rgba(10, 43, 64, .97),
+                    rgba(17, 55, 57, .97));
 
-            border: 1px solid rgba(212, 175, 55, .25);
+            border: 1px solid rgba(14, 165, 233, .25);
 
             border-radius: 16px;
 
@@ -248,25 +237,23 @@
         .book:hover {
             transform: translateY(-8px);
 
-            border-color: #d4af37;
+            border-color: #f59e0b;
 
             box-shadow:
                 0 18px 45px rgba(0, 0, 0, .6),
-                0 0 25px rgba(212, 175, 55, .12);
+                0 0 25px rgba(14, 165, 233, .12);
         }
-
-        /* ================= BOOK IMAGE ================= */
 
         .book-image {
             padding: 15px;
 
             background:
                 linear-gradient(135deg,
-                    #151c31,
-                    #321a25);
+                    #082f49,
+                    #164e63);
 
             border-bottom:
-                1px solid rgba(212, 175, 55, .2);
+                1px solid rgba(245, 158, 11, .2);
         }
 
         .book img {
@@ -293,8 +280,6 @@
                 0 12px 30px rgba(0, 0, 0, .7);
         }
 
-        /* ================= BOOK CONTENT ================= */
-
         .book-content {
             display: flex;
 
@@ -306,7 +291,7 @@
         }
 
         .book h3 {
-            color: #f1e6c8;
+            color: #e8f8ff;
 
             font-size: 19px;
 
@@ -314,7 +299,7 @@
         }
 
         .book-title {
-            color: #d4af37;
+            color: #f59e0b;
 
             font-size: 13px;
 
@@ -322,7 +307,7 @@
         }
 
         .book-desc {
-            color: #b5b0a4;
+            color: #a9c4cf;
 
             font-size: 14px;
 
@@ -333,8 +318,6 @@
             flex-grow: 1;
         }
 
-        /* ================= BUY BUTTON ================= */
-
         .buy-button {
             display: block;
 
@@ -344,13 +327,12 @@
 
             border-radius: 9px;
 
-            /* Burgundy + gold Harry Potter style */
             background:
                 linear-gradient(135deg,
-                    #5c1323,
-                    #7b1e32);
+                    #075985,
+                    #0f766e);
 
-            color: #f7e8b0;
+            color: #fff3c4;
 
             font-size: 14px;
 
@@ -360,7 +342,7 @@
 
             text-decoration: none;
 
-            border: 1px solid rgba(212, 175, 55, .55);
+            border: 1px solid rgba(245, 158, 11, .55);
 
             box-shadow:
                 0 6px 18px rgba(0, 0, 0, .4);
@@ -373,18 +355,16 @@
 
             background:
                 linear-gradient(135deg,
-                    #b8860b,
-                    #d4af37);
+                    #d97706,
+                    #f59e0b);
 
-            color: #15101a;
+            color: #071521;
 
-            border-color: #f1d878;
+            border-color: #fcd34d;
 
             box-shadow:
-                0 9px 25px rgba(212, 175, 55, .25);
+                0 9px 25px rgba(245, 158, 11, .25);
         }
-
-        /* ================= BACK BUTTON ================= */
 
         .back-button {
             display: block;
@@ -395,13 +375,13 @@
 
             padding: 12px 16px;
 
-            border: 2px solid #d4af37;
+            border: 2px solid #f59e0b;
 
             border-radius: 9px;
 
-            color: #d4af37;
+            color: #f59e0b;
 
-            background: rgba(92, 19, 35, .25);
+            background: rgba(8, 74, 89, .25);
 
             text-align: center;
 
@@ -415,21 +395,19 @@
         .back-button:hover {
             background:
                 linear-gradient(135deg,
-                    #5c1323,
-                    #7b1e32);
+                    #075985,
+                    #0f766e);
 
-            color: #f7e8b0;
+            color: #fff3c4;
 
             box-shadow:
-                0 0 20px rgba(212, 175, 55, .18);
+                0 0 20px rgba(245, 158, 11, .18);
         }
 
-        /* ================= FOOTER ================= */
-
         footer {
-            background: #060914;
+            background: #04131f;
 
-            color: #85899a;
+            color: #718b99;
 
             text-align: center;
 
@@ -438,14 +416,12 @@
             font-size: 13px;
 
             border-top:
-                1px solid rgba(212, 175, 55, .3);
+                1px solid rgba(245, 158, 11, .3);
         }
 
         footer strong {
-            color: #d4af37;
+            color: #f59e0b;
         }
-
-        /* ================= MOBILE ================= */
 
         @media (max-width:700px) {
 
@@ -498,6 +474,7 @@
 </head>
 
 <body>
+
     <nav>
         <a href="index.html">Home</a>
         <a href="books.html">Books</a>
@@ -509,16 +486,16 @@
     <section class="hero">
 
         <div class="hero-label">
-            Harry Potter Collection
+            Heroes of Olympus Collection
         </div>
 
         <h1>
-            Explore All <span>7 Books</span>
+            Explore All <span>5 Books</span>
         </h1>
 
         <p>
-            Discover the complete Harry Potter collection,
-            from Harry's first adventure to the final chapter.
+            Discover the complete Heroes of Olympus collection,
+            from the beginning of the prophecy to the final battle.
         </p>
 
     </section>
@@ -532,11 +509,11 @@
             </div>
 
             <h2>
-                Harry Potter Books
+                Heroes of Olympus Books
             </h2>
 
             <p>
-                Explore all seven books in the series.
+                Explore all five books in the series.
             </p>
 
         </div>
@@ -546,20 +523,21 @@
             <div class="book">
 
                 <div class="book-image">
-                    <img src="H1.jpg" alt="Harry Potter and the Philosopher's Stone">
+                    <img src="O1.jpg" alt="The Lost Hero">
                 </div>
 
                 <div class="book-content">
 
-                    <h3>Harry Potter 1</h3>
+                    <h3>Heroes of Olympus 1</h3>
 
                     <p class="book-title">
-                        Harry Potter and the Philosopher's Stone
+                        The Lost Hero
                     </p>
 
                     <p class="book-desc">
-                        Harry discovers the magical world and begins
-                        his journey at Hogwarts.
+                        Jason, Piper, and Leo discover their connection
+                        to the world of Greek and Roman demigods and
+                        begin a dangerous quest.
                     </p>
 
                     <a href="#" class="buy-button">
@@ -570,24 +548,24 @@
 
             </div>
 
-
             <div class="book">
 
                 <div class="book-image">
-                    <img src="H2.jpg" alt="Harry Potter and the Chamber of Secrets">
+                    <img src="O2.jpg" alt="The Son of Neptune">
                 </div>
 
                 <div class="book-content">
 
-                    <h3>Harry Potter 2</h3>
+                    <h3>Heroes of Olympus 2</h3>
 
                     <p class="book-title">
-                        Harry Potter and the Chamber of Secrets
+                        The Son of Neptune
                     </p>
 
                     <p class="book-desc">
-                        Harry returns to Hogwarts and faces a mysterious
-                        danger hidden within the school.
+                        Percy Jackson awakens without his memories
+                        and finds himself at Camp Jupiter, where
+                        a new quest begins.
                     </p>
 
                     <a href="#" class="buy-button">
@@ -598,24 +576,24 @@
 
             </div>
 
-
             <div class="book">
 
                 <div class="book-image">
-                    <img src="H3.jpg" alt="Harry Potter and the Prisoner of Azkaban">
+                    <img src="O3.jpg" alt="The Mark of Athena">
                 </div>
 
                 <div class="book-content">
 
-                    <h3>Harry Potter 3</h3>
+                    <h3>Heroes of Olympus 3</h3>
 
                     <p class="book-title">
-                        Harry Potter and the Prisoner of Azkaban
+                        The Mark of Athena
                     </p>
 
                     <p class="book-desc">
-                        Harry learns more about his past when a dangerous
-                        prisoner escapes from Azkaban.
+                        The Greek and Roman demigods come together
+                        as they begin a dangerous quest connected
+                        to the Mark of Athena.
                     </p>
 
                     <a href="#" class="buy-button">
@@ -626,24 +604,24 @@
 
             </div>
 
-
             <div class="book">
 
                 <div class="book-image">
-                    <img src="H4.jpg" alt="Harry Potter and the Goblet of Fire">
+                    <img src="O4.jpg" alt="The House of Hades">
                 </div>
 
                 <div class="book-content">
 
-                    <h3>Harry Potter 4</h3>
+                    <h3>Heroes of Olympus 4</h3>
 
                     <p class="book-title">
-                        Harry Potter and the Goblet of Fire
+                        The House of Hades
                     </p>
 
                     <p class="book-desc">
-                        Harry is unexpectedly chosen to compete in the
-                        dangerous Triwizard Tournament.
+                        The heroes face one of their greatest
+                        challenges as they attempt to survive
+                        the terrifying depths of Tartarus.
                     </p>
 
                     <a href="#" class="buy-button">
@@ -654,80 +632,24 @@
 
             </div>
 
-
             <div class="book">
 
                 <div class="book-image">
-                    <img src="H5.jpg" alt="Harry Potter and the Order of the Phoenix">
+                    <img src="O5.jpg" alt="The Blood of Olympus">
                 </div>
 
                 <div class="book-content">
 
-                    <h3>Harry Potter 5</h3>
+                    <h3>Heroes of Olympus 5</h3>
 
                     <p class="book-title">
-                        Harry Potter and the Order of the Phoenix
+                        The Blood of Olympus
                     </p>
 
                     <p class="book-desc">
-                        Harry and his friends prepare for the growing
-                        threat of Voldemort's return.
-                    </p>
-
-                    <a href="#" class="buy-button">
-                        Buy Now — $3.99
-                    </a>
-
-                </div>
-
-            </div>
-
-
-            <div class="book">
-
-                <div class="book-image">
-                    <img src="H6.jpg" alt="Harry Potter and the Half-Blood Prince">
-                </div>
-
-                <div class="book-content">
-
-                    <h3>Harry Potter 6</h3>
-
-                    <p class="book-title">
-                        Harry Potter and the Half-Blood Prince
-                    </p>
-
-                    <p class="book-desc">
-                        Harry discovers important secrets about Voldemort
-                        and prepares for the final battle.
-                    </p>
-
-                    <a href="#" class="buy-button">
-                        Buy Now — $3.99
-                    </a>
-
-                </div>
-
-            </div>
-
-
-            <div class="book">
-
-                <div class="book-image">
-                    <img src="H7.jpg" alt="Harry Potter and the Deathly Hallows">
-                </div>
-
-                <div class="book-content">
-
-                    <h3>Harry Potter 7</h3>
-
-                    <p class="book-title">
-                        Harry Potter and the Deathly Hallows
-                    </p>
-
-                    <p class="book-desc">
-                        Harry and his friends face their greatest
-                        challenge as the final battle approaches.
+                        The heroes prepare for the final battle
+                        as they fight to stop the ancient prophecy
+                        from becoming reality.
                     </p>
 
                     <a href="#" class="buy-button">

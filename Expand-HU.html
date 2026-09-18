@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>The Hunger Games - Complete Series</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: #f5f5f5;
+            line-height: 1.6;
+
+            background:
+                radial-gradient(circle at top left, rgba(180, 25, 25, .25), transparent 35%),
+                radial-gradient(circle at bottom right, rgba(230, 90, 20, .18), transparent 35%),
+                linear-gradient(135deg, #0b0b0b, #181818 45%, #241414);
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            display: flex;
+            justify-content: center;
+            gap: 45px;
+
+            padding: 18px 30px;
+
+            background: rgba(10, 10, 10, .92);
+            backdrop-filter: blur(14px);
+
+            border-bottom: 1px solid #542020;
+            box-shadow: 0 4px 25px rgba(0, 0, 0, .4);
+        }
+
+        nav a {
+            position: relative;
+
+            color: #d6d6d6;
+            text-decoration: none;
+
+            font-size: 15px;
+            font-weight: 600;
+
+            padding: 6px 0;
+
+            transition: .25s;
+        }
+
+        nav a:hover {
+            color: #e43d30;
+        }
+
+        nav a::after {
+            content: "";
+
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+
+            width: 0;
+            height: 2px;
+
+            background: #e43d30;
+            border-radius: 10px;
+
+            transform: translateX(-50%);
+            transition: .25s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            position: relative;
+
+            text-align: center;
+
+            padding: 70px 20px 45px;
+
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "🔥";
+
+            position: absolute;
+
+            top: 25px;
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            font-size: 85px;
+
+            opacity: .08;
+            filter: blur(1px);
+        }
+
+        .hero-label {
+            display: inline-block;
+
+            color: #ffb347;
+            background: rgba(130, 20, 20, .25);
+
+            border: 1px solid #713030;
+
+            padding: 7px 16px;
+
+            border-radius: 50px;
+
+            font-size: 12px;
+            font-weight: 700;
+
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+
+            margin-bottom: 17px;
+        }
+
+        .hero h1 {
+            position: relative;
+
+            font-size: clamp(34px, 5vw, 56px);
+            font-weight: 800;
+
+            letter-spacing: -1.5px;
+
+            color: #ffffff;
+
+            margin-bottom: 10px;
+
+            text-shadow: 0 4px 25px rgba(0, 0, 0, .5);
+        }
+
+        .hero h1 span {
+            color: #e43d30;
+        }
+
+        .hero p {
+            max-width: 650px;
+
+            margin: auto;
+
+            color: #b8b8b8;
+
+            font-size: 17px;
+        }
+
+        .divider {
+            width: 80px;
+            height: 3px;
+
+            margin: 25px auto 0;
+
+            background: linear-gradient(90deg, #8b1e1e, #e43d30, #ff9f43);
+
+            border-radius: 20px;
+        }
+
+        .books {
+            width: min(1150px, 92%);
+
+            margin: 15px auto 80px;
+        }
+
+        .book-grid {
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 25px;
+        }
+
+        .book-card {
+            position: relative;
+
+            display: flex;
+            flex-direction: column;
+
+            background:
+                linear-gradient(145deg,
+                    rgba(45, 45, 45, .98),
+                    rgba(24, 24, 24, .98));
+
+            border: 1px solid #493030;
+
+            border-radius: 16px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, .45),
+                inset 0 1px rgba(255, 255, 255, .03);
+
+            transition: .3s;
+        }
+
+        .book-card:hover {
+            transform: translateY(-9px);
+
+            border-color: #a7352d;
+
+            box-shadow:
+                0 18px 45px rgba(0, 0, 0, .55),
+                0 0 25px rgba(180, 40, 30, .12);
+        }
+
+        .book-image {
+            position: relative;
+
+            padding: 16px;
+
+            background:
+                radial-gradient(circle at center,
+                    rgba(160, 35, 25, .18),
+                    transparent 65%);
+
+            border-bottom: 1px solid #412626;
+        }
+
+        .book-image::after {
+            content: "";
+
+            position: absolute;
+
+            left: 16px;
+            right: 16px;
+            bottom: 12px;
+
+            height: 25px;
+
+            background: rgba(0, 0, 0, .35);
+
+            filter: blur(15px);
+        }
+
+        .book-image img {
+            position: relative;
+
+            display: block;
+
+            width: 100%;
+            height: 420px;
+
+            object-fit: cover;
+
+            border-radius: 9px;
+
+            box-shadow:
+                0 12px 25px rgba(0, 0, 0, .5);
+
+            transition: .3s;
+
+            z-index: 2;
+        }
+
+        .book-card:hover .book-image img {
+            transform: scale(1.025);
+        }
+
+        .book-content {
+            display: flex;
+            flex-direction: column;
+
+            flex-grow: 1;
+
+            padding: 20px;
+        }
+
+        .book-number {
+            color: #e43d30;
+
+            font-size: 11px;
+            font-weight: 800;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1.5px;
+
+            margin-bottom: 5px;
+        }
+
+        .book-content h2 {
+            color: #ffffff;
+
+            font-size: 21px;
+
+            margin-bottom: 3px;
+        }
+
+        .author {
+            color: #999999;
+
+            font-size: 13px;
+
+            margin-bottom: 12px;
+        }
+
+        .description {
+            color: #b5b5b5;
+
+            font-size: 14px;
+
+            line-height: 1.65;
+
+            flex-grow: 1;
+
+            margin-bottom: 20px;
+        }
+
+        .buy-button {
+            display: block;
+
+            width: 100%;
+
+            padding: 12px 16px;
+
+            border-radius: 9px;
+
+            background:
+                linear-gradient(135deg,
+                    #9d211b,
+                    #d9362b);
+
+            color: #ffffff;
+
+            text-decoration: none;
+
+            text-align: center;
+
+            font-size: 14px;
+            font-weight: 700;
+
+            border: 1px solid #e04a3d;
+
+            box-shadow:
+                0 7px 18px rgba(150, 25, 20, .25);
+
+            transition: .2s;
+        }
+
+        .buy-button:hover {
+            transform: translateY(-2px);
+
+            background:
+                linear-gradient(135deg,
+                    #bd2920,
+                    #ef4437);
+
+            box-shadow:
+                0 10px 25px rgba(190, 40, 30, .35);
+        }
+
+        .back-button {
+            display: block;
+
+            width: min(300px, 90%);
+
+            margin: 0 auto 60px;
+
+            padding: 13px 20px;
+
+            border: 1px solid #543232;
+
+            border-radius: 10px;
+
+            background: rgba(30, 30, 30, .8);
+
+            color: #cfcfcf;
+
+            text-align: center;
+
+            text-decoration: none;
+
+            font-size: 14px;
+            font-weight: 700;
+
+            transition: .25s;
+        }
+
+        .back-button:hover {
+            color: #ffffff;
+
+            border-color: #b53b32;
+
+            background: #271717;
+
+            transform: translateY(-2px);
+        }
+
+        footer {
+            background: #080808;
+
+            color: #777777;
+
+            text-align: center;
+
+            padding: 27px 20px;
+
+            font-size: 13px;
+
+            border-top: 1px solid #392020;
+        }
+
+        footer strong {
+            color: #e43d30;
+        }
+
+        @media (max-width: 850px) {
+
+            .book-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .book-image img {
+                height: 380px;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            nav {
+                gap: 20px;
+                padding: 15px;
+            }
+
+            nav a {
+                font-size: 13px;
+            }
+
+            .hero {
+                padding-top: 50px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            .book-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .book-image img {
+                height: 430px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="books.html">Books</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="categories.html">Categories</a>
+    </nav>
+
+    <section class="hero">
+
+        <div class="hero-label">
+            Complete Series
+        </div>
+
+        <h1>
+            The <span>Hunger Games</span>
+        </h1>
+
+        <p>
+            Explore all three books in the Hunger Games trilogy in the correct reading order.
+        </p>
+
+        <div class="divider"></div>
+
+    </section>
+
+    <section class="books">
+
+        <div class="book-grid">
+
+            <div class="book-card">
+
+                <div class="book-image">
+                    <img src="HU1.jpg" alt="The Hunger Games">
+                </div>
+
+                <div class="book-content">
+
+                    <div class="book-number">
+                        Book 1
+                    </div>
+
+                    <h2>
+                        The Hunger Games
+                    </h2>
+
+                    <p class="author">
+                        by Suzanne Collins
+                    </p>
+
+                    <p class="description">
+                        Katniss Everdeen is forced to enter a dangerous competition where young people
+                        fight for survival in a dystopian society.
+                    </p>
+
+                    <a href="#" class="buy-button">
+                        Buy Now — $3.99
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="book-card">
+
+                <div class="book-image">
+                    <img src="HU2.jpg" alt="Catching Fire">
+                </div>
+
+                <div class="book-content">
+
+                    <div class="book-number">
+                        Book 2
+                    </div>
+
+                    <h2>
+                        Catching Fire
+                    </h2>
+
+                    <p class="author">
+                        by Suzanne Collins
+                    </p>
+
+                    <p class="description">
+                        Katniss and Peeta return to the spotlight as unrest spreads throughout the
+                        districts and a new challenge threatens their lives.
+                    </p>
+
+                    <a href="#" class="buy-button">
+                        Buy Now — $3.99
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="book-card">
+
+                <div class="book-image">
+                    <img src="HU3.jpg" alt="Mockingjay">
+                </div>
+
+                <div class="book-content">
+
+                    <div class="book-number">
+                        Book 3
+                    </div>
+
+                    <h2>
+                        Mockingjay
+                    </h2>
+
+                    <p class="author">
+                        by Suzanne Collins
+                    </p>
+
+                    <p class="description">
+                        Katniss becomes a symbol of rebellion as the conflict between the districts
+                        and the Capitol reaches its final stage.
+                    </p>
+
+                    <a href="#" class="buy-button">
+                        Buy Now — $3.99
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <a href="index.html" class="back-button">
+        ← Back to Popular Books
+    </a>
+
+    <footer>
+
+        <p>
+            <strong>Online Books</strong> • Discover. Read. Enjoy.
+        </p>
+
+    </footer>
+
+</body>
+
+</html>

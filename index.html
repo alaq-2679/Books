@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Online Books - Home</title>
+    <title>Online Books - 500+ Books</title>
 
     <style>
         * {
@@ -20,8 +19,10 @@
 
         body {
             font-family: Arial, Helvetica, sans-serif;
-            background: #f6f8fc;
-            color: #172033;
+            background:
+                radial-gradient(circle at top, rgba(135, 220, 255, .3), transparent 35%),
+                linear-gradient(135deg, #06111b, #123d55 45%, #071a28 100%);
+            color: #eaf8ff;
             line-height: 1.6;
         }
 
@@ -33,15 +34,15 @@
             justify-content: center;
             gap: 45px;
             padding: 18px 30px;
-            background: rgba(255, 255, 255, .92);
+            background: rgba(4, 15, 25, .96);
             backdrop-filter: blur(14px);
-            border-bottom: 1px solid #e7ebf2;
-            box-shadow: 0 4px 20px rgba(20, 30, 60, .06);
+            border-bottom: 1px solid rgba(126, 219, 255, .5);
+            box-shadow: 0 4px 25px rgba(0, 0, 0, .5);
         }
 
         nav a {
             position: relative;
-            color: #475569;
+            color: #dceff7;
             text-decoration: none;
             font-size: 15px;
             font-weight: 600;
@@ -50,7 +51,7 @@
         }
 
         nav a:hover {
-            color: #2563eb;
+            color: #7edbff;
         }
 
         nav a::after {
@@ -60,7 +61,7 @@
             bottom: 0;
             width: 0;
             height: 2px;
-            background: #2563eb;
+            background: #7edbff;
             border-radius: 10px;
             transform: translateX(-50%);
             transition: .25s;
@@ -72,13 +73,17 @@
 
         .hero {
             text-align: center;
-            padding: 50px 20px 25px;
+            padding: 65px 20px 45px;
+            background:
+                radial-gradient(circle at center,
+                    rgba(126, 219, 255, .14),
+                    transparent 60%);
         }
 
         .hero-label {
             display: inline-block;
-            color: #2563eb;
-            background: #eaf1ff;
+            color: #a9e8ff;
+            background: rgba(20, 91, 121, .65);
             padding: 7px 15px;
             border-radius: 50px;
             font-size: 12px;
@@ -86,124 +91,33 @@
             letter-spacing: 1px;
             text-transform: uppercase;
             margin-bottom: 15px;
+            border: 1px solid rgba(126, 219, 255, .5);
         }
 
         .hero h1 {
             font-size: clamp(32px, 5vw, 54px);
             font-weight: 800;
             letter-spacing: -1.5px;
-            color: #111827;
+            color: #eaf8ff;
             margin-bottom: 10px;
+            text-shadow: 0 3px 15px rgba(0, 0, 0, .6);
         }
 
         .hero h1 span {
-            color: #2563eb;
+            color: #7edbff;
+            text-shadow: 0 0 15px rgba(126, 219, 255, .3);
         }
 
         .hero p {
-            max-width: 600px;
+            max-width: 700px;
             margin: auto;
-            color: #64748b;
+            color: #a8cbd8;
             font-size: 17px;
         }
 
-        .slider {
-            width: min(1100px, 90%);
-            height: 430px;
-            margin: 35px auto 65px;
-            overflow: hidden;
-            border-radius: 22px;
-            position: relative;
-            background: #0f172a;
-            box-shadow: 0 20px 50px rgba(15, 23, 42, .18);
-        }
-
-        .slides {
-            display: flex;
-            width: 500%;
-            height: 100%;
-            animation: slide 25s infinite ease-in-out;
-        }
-
-        .slide-item {
-            position: relative;
-            width: 20%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-        }
-
-        .slide-item::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(90deg, rgba(15, 23, 42, .45), transparent 50%, rgba(15, 23, 42, .35));
-            z-index: 2;
-        }
-
-        .slide-bg {
-            position: absolute;
-            width: 120%;
-            height: 120%;
-            object-fit: cover;
-            filter: blur(25px) brightness(.35);
-            transform: scale(1.1);
-            z-index: 1;
-        }
-
-        .slide-img {
-            position: relative;
-            height: 88%;
-            max-width: 65%;
-            object-fit: contain;
-            z-index: 3;
-            border-radius: 8px;
-            box-shadow: 0 20px 45px rgba(0, 0, 0, .5);
-            transition: .4s;
-        }
-
-        .slide-item:hover .slide-img {
-            transform: scale(1.03);
-        }
-
-        @keyframes slide {
-
-            0%,
-            16% {
-                transform: translateX(0);
-            }
-
-            20%,
-            36% {
-                transform: translateX(-20%);
-            }
-
-            40%,
-            56% {
-                transform: translateX(-40%);
-            }
-
-            60%,
-            76% {
-                transform: translateX(-60%);
-            }
-
-            80%,
-            96% {
-                transform: translateX(-80%);
-            }
-
-            100% {
-                transform: translateX(0);
-            }
-        }
-
-        .cards {
-            width: min(1250px, 92%);
-            margin: auto;
-            padding-bottom: 70px;
+        .books {
+            width: min(1400px, 94%);
+            margin: 20px auto 60px;
         }
 
         .section-header {
@@ -212,7 +126,7 @@
         }
 
         .small-title {
-            color: #2563eb;
+            color: #7edbff;
             font-size: 12px;
             font-weight: 700;
             letter-spacing: 1.5px;
@@ -222,153 +136,358 @@
 
         .section-header h2 {
             font-size: 34px;
-            color: #111827;
+            color: #eaf8ff;
+            text-shadow: 0 3px 15px rgba(0, 0, 0, .5);
         }
 
         .section-header p {
-            color: #64748b;
+            color: #91b8c7;
             margin-top: 5px;
         }
 
-        .card-container {
+        .controls {
+            background: rgba(7, 29, 43, .85);
+            border: 1px solid rgba(126, 219, 255, .25);
+            border-radius: 18px;
+            padding: 20px;
+            margin-bottom: 35px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, .35);
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 15px 18px;
+            border-radius: 10px;
+            border: 1px solid rgba(126, 219, 255, .35);
+            background: rgba(3, 16, 27, .9);
+            color: white;
+            font-size: 16px;
+            outline: none;
+            margin-bottom: 18px;
+        }
+
+        .search-box:focus {
+            border-color: #7edbff;
+            box-shadow: 0 0 15px rgba(126, 219, 255, .15);
+        }
+
+        .search-box::placeholder {
+            color: #7193a0;
+        }
+
+        .filters {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .filter-button {
+            padding: 9px 16px;
+            border-radius: 30px;
+            border: 1px solid rgba(126, 219, 255, .35);
+            background: rgba(20, 91, 121, .3);
+            color: #ccecf7;
+            cursor: pointer;
+            font-weight: 600;
+            transition: .25s;
+        }
+
+        .filter-button:hover,
+        .filter-button.active {
+            background: linear-gradient(135deg, #155e75, #087ea4);
+            color: white;
+            border-color: #7edbff;
+        }
+
+        .series-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 25px;
         }
 
-        .card {
+        .series-card {
             display: flex;
             flex-direction: column;
-            background: #fff;
-            border: 1px solid #e8edf5;
-            border-radius: 16px;
+            background:
+                linear-gradient(145deg,
+                    rgba(17, 55, 75, .97),
+                    rgba(8, 28, 43, .97));
+            border: 1px solid rgba(126, 219, 255, .25);
+            border-radius: 18px;
             overflow: hidden;
-            box-shadow: 0 5px 20px rgba(30, 41, 59, .05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, .4);
             transition: .3s;
         }
 
-        .card:hover {
+        .series-card:hover {
             transform: translateY(-8px);
-            border-color: #d5e2ff;
-            box-shadow: 0 18px 40px rgba(30, 41, 59, .12);
+            border-color: #7edbff;
+            box-shadow:
+                0 18px 45px rgba(0, 0, 0, .6),
+                0 0 25px rgba(126, 219, 255, .15);
         }
 
-        .card-image {
+        .series-image {
             padding: 15px;
-            background: linear-gradient(135deg, #f1f5f9, #e8eef8);
+            background:
+                linear-gradient(135deg,
+                    #164b67,
+                    #102b3e);
         }
 
-        .card img {
+        .series-image img {
+            width: 100%;
+            height: 330px;
+            object-fit: cover;
+            display: block;
+            border-radius: 11px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, .55);
+        }
+
+        .series-content {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .series-number {
+            color: #7edbff;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 7px;
+        }
+
+        .series-content h3 {
+            color: #eaf8ff;
+            font-size: 21px;
+            margin-bottom: 7px;
+        }
+
+        .series-books {
+            color: #7edbff;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .series-content p {
+            color: #a7c5d0;
+            font-size: 14px;
+            line-height: 1.6;
+            flex-grow: 1;
+            margin-bottom: 18px;
+        }
+
+        .series-button {
+            display: block;
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: 9px;
+            background:
+                linear-gradient(135deg,
+                    #155e75,
+                    #087ea4);
+            color: #eafaff;
+            font-size: 14px;
+            font-weight: 700;
+            text-align: center;
+            text-decoration: none;
+            border: 1px solid rgba(126, 219, 255, .55);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, .4);
+            transition: .25s;
+        }
+
+        .series-button:hover {
+            transform: translateY(-2px);
+            background:
+                linear-gradient(135deg,
+                    #54c7ed,
+                    #a4e9ff);
+            color: #071820;
+        }
+
+        .book-count {
+            text-align: center;
+            color: #8fb6c5;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+
+        .book-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 25px;
+        }
+
+        .book {
+            display: flex;
+            flex-direction: column;
+            background:
+                linear-gradient(145deg,
+                    rgba(17, 55, 75, .97),
+                    rgba(8, 28, 43, .97));
+            border: 1px solid rgba(126, 219, 255, .25);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, .4);
+            transition: .3s;
+        }
+
+        .book:hover {
+            transform: translateY(-8px);
+            border-color: #7edbff;
+            box-shadow:
+                0 18px 45px rgba(0, 0, 0, .6),
+                0 0 25px rgba(126, 219, 255, .12);
+        }
+
+        .book-image {
+            padding: 15px;
+            background:
+                linear-gradient(135deg,
+                    #164b67,
+                    #102b3e);
+        }
+
+        .book img {
             display: block;
             width: 100%;
             height: 310px;
             object-fit: cover;
             border-radius: 10px;
-            box-shadow: 0 8px 20px rgba(15, 23, 42, .12);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, .55);
             transition: .3s;
+            background: #102b3e;
         }
 
-        .card:hover img {
+        .book:hover img {
             transform: scale(1.025);
         }
 
-        .card-content {
+        .book-content {
             display: flex;
             flex-direction: column;
             flex-grow: 1;
             padding: 18px;
         }
 
-        .card h3 {
-            color: #111827;
-            font-size: 19px;
+        .book h3 {
+            color: #eaf8ff;
+            font-size: 18px;
             margin-bottom: 3px;
         }
 
-        .author {
-            color: #64748b;
+        .book-title {
+            color: #7edbff;
             font-size: 13px;
-            margin-bottom: 7px;
-        }
-
-        .rating {
             margin-bottom: 10px;
-            height: 22px;
         }
 
-        .stars {
-            position: relative;
-            display: inline-block;
-            font-size: 20px;
-            line-height: 1;
-            letter-spacing: 1px;
-        }
-
-        .stars::before {
-            content: "★★★★★";
-            color: #d7dce5;
-        }
-
-        .stars::after {
-            content: "★★★★★";
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: var(--rating);
-            overflow: hidden;
-            white-space: nowrap;
-            color: #f5b301;
-        }
-
-        .desc {
-            color: #64748b;
+        .book-desc {
+            color: #a7c5d0;
             font-size: 14px;
             line-height: 1.6;
             margin-bottom: 18px;
             flex-grow: 1;
         }
 
-        button,
-        .expand-button {
+        .book-category {
+            display: inline-block;
+            width: fit-content;
+            padding: 4px 9px;
+            margin-bottom: 12px;
+            border-radius: 20px;
+            background: rgba(126, 219, 255, .1);
+            color: #7edbff;
+            border: 1px solid rgba(126, 219, 255, .2);
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .buy-button {
+            display: block;
             width: 100%;
-            border: none;
             padding: 12px 16px;
             border-radius: 9px;
-            background: linear-gradient(135deg, #2563eb, #3b82f6);
-            color: #fff;
+            background:
+                linear-gradient(135deg,
+                    #155e75,
+                    #087ea4);
+            color: #eafaff;
             font-size: 14px;
             font-weight: 700;
             text-align: center;
             text-decoration: none;
-            cursor: pointer;
-            box-shadow: 0 6px 15px rgba(37, 99, 235, .2);
-            transition: .2s;
+            border: 1px solid rgba(126, 219, 255, .55);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, .4);
+            transition: .25s;
         }
 
-        .expand-button {
-            display: block;
-        }
-
-        button:hover,
-        .expand-button:hover {
+        .buy-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 9px 20px rgba(37, 99, 235, .3);
+            background:
+                linear-gradient(135deg,
+                    #54c7ed,
+                    #a4e9ff);
+            color: #071820;
+        }
+
+        .loading {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 60px 20px;
+            color: #7edbff;
+            font-size: 18px;
+        }
+
+        .loading span {
+            display: block;
+            margin-top: 10px;
+            color: #7899a7;
+            font-size: 14px;
+        }
+
+        .back-button {
+            display: block;
+            width: 220px;
+            margin: 0 auto 70px;
+            padding: 12px 16px;
+            border: 2px solid #7edbff;
+            border-radius: 9px;
+            color: #7edbff;
+            background: rgba(20, 91, 121, .25);
+            text-align: center;
+            text-decoration: none;
+            font-weight: 700;
+            transition: .25s;
+        }
+
+        .back-button:hover {
+            background:
+                linear-gradient(135deg,
+                    #155e75,
+                    #087ea4);
+            color: white;
         }
 
         footer {
-            background: #111827;
-            color: #94a3b8;
+            background: #04101a;
+            color: #718b97;
             text-align: center;
             padding: 25px 20px;
             font-size: 13px;
+            border-top: 1px solid rgba(126, 219, 255, .3);
         }
 
         footer strong {
-            color: #fff;
+            color: #7edbff;
         }
 
-        @media (max-width:700px) {
-
+        @media (max-width: 700px) {
             nav {
                 gap: 20px;
                 padding: 15px;
@@ -390,23 +509,22 @@
                 font-size: 15px;
             }
 
-            .slider {
-                height: 330px;
-                width: 94%;
-            }
-
-            .slide-img {
-                height: 82%;
-                max-width: 75%;
-            }
-
             .section-header h2 {
                 font-size: 28px;
             }
+
+            .book-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+
+            .book img,
+            .series-image img {
+                height: 260px;
+            }
         }
 
-        @media (max-width:450px) {
-
+        @media (max-width: 450px) {
             nav {
                 gap: 13px;
             }
@@ -415,271 +533,295 @@
                 font-size: 12px;
             }
 
-            .slider {
-                height: 280px;
+            .book-grid,
+            .series-grid {
+                grid-template-columns: 1fr;
             }
 
-            .card img {
+            .book img,
+            .series-image img {
                 height: 350px;
+            }
+
+            .back-button {
+                width: 90%;
             }
         }
     </style>
 </head>
 
 <body>
+
     <nav>
         <a href="index.html">Home</a>
-        <a href="books.html">Books</a>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
-        <a href="categories.html">Categories</a>
     </nav>
 
     <section class="hero">
 
         <div class="hero-label">
-            Premium Book Collection
+            Online Books Library
         </div>
 
         <h1>
-            Discover Your Next <span>Great Read</span>
+            Explore <span>500+ Books</span>
         </h1>
 
         <p>
-            Explore timeless classics, bestselling adventures, and unforgettable stories all in one place.
+            Discover hundreds of books and explore complete series collections.
         </p>
 
     </section>
 
-    <div class="slider">
-
-        <div class="slides">
-
-            <div class="slide-item">
-                <img class="slide-bg" src="Dav.jpg" alt="">
-                <img class="slide-img" src="Dav.jpg" alt="David Copperfield">
-            </div>
-
-            <div class="slide-item">
-                <img class="slide-bg" src="Dune.jpg" alt="">
-                <img class="slide-img" src="Dune.jpg" alt="Dune">
-            </div>
-
-            <div class="slide-item">
-                <img class="slide-bg" src="H1.jpg" alt="">
-                <img class="slide-img" src="H1.jpg" alt="Harry Potter">
-            </div>
-
-            <div class="slide-item">
-                <img class="slide-bg" src="Lord.jpg" alt="">
-                <img class="slide-img" src="Lord.jpg" alt="Lord of the Rings">
-            </div>
-
-            <div class="slide-item">
-                <img class="slide-bg" src="O1.jpg" alt="">
-                <img class="slide-img" src="O1.jpg" alt="Heroes of Olympus">
-            </div>
-
-        </div>
-
-    </div>
-
-    <section class="cards">
+    <section class="books">
 
         <div class="section-header">
 
             <div class="small-title">
-                Browse Our Collection
+                The Complete Library
             </div>
 
-            <h2>Popular Books</h2>
+            <h2>
+                Browse Our Books
+            </h2>
 
             <p>
-                Hand-picked stories readers love.
+                Search, filter and discover your next favourite book.
             </p>
 
         </div>
 
-        <div class="card-container">
+        <div class="controls">
 
-            <div class="card">
+            <input type="text" id="searchBox" class="search-box" placeholder="🔎 Search for a book or author...">
 
-                <div class="card-image">
-                    <img src="Dav.jpg" alt="David Copperfield">
+            <div class="filters">
+
+                <button class="filter-button active" data-category="All">
+                    All Books
+                </button>
+
+                <button class="filter-button" data-category="Fantasy">
+                    Fantasy
+                </button>
+
+                <button class="filter-button" data-category="Adventure">
+                    Adventure
+                </button>
+
+                <button class="filter-button" data-category="Mystery">
+                    Mystery
+                </button>
+
+                <button class="filter-button" data-category="Science Fiction">
+                    Science Fiction
+                </button>
+
+                <button class="filter-button" data-category="Classics">
+                    Classics
+                </button>
+
+                <button class="filter-button" data-category="Romance">
+                    Romance
+                </button>
+
+                <button class="filter-button" data-category="Horror">
+                    Horror
+                </button>
+
+                <button class="filter-button" data-category="Young Adult">
+                    Young Adult
+                </button>
+
+                <button class="filter-button" data-category="Series">
+                    Series
+                </button>
+
+            </div>
+
+        </div>
+
+        <div class="book-count" id="bookCount">
+            Loading books...
+        </div>
+
+        <div id="seriesSection" style="display:none;">
+
+            <div class="section-header">
+                <div class="small-title">
+                    Complete Collections
                 </div>
 
-                <div class="card-content">
+                <h2>
+                    Book Series
+                </h2>
 
-                    <h3>David Copperfield</h3>
+                <p>
+                    Choose a series to see every book in that collection.
+                </p>
+            </div>
 
-                    <p class="author">
-                        by Charles Dickens
-                    </p>
+            <div class="series-grid">
 
-                    <p class="desc">
-                        Follows the life of an orphan from his difficult childhood to his eventual success
-                        as a famous author.
-                    </p>
+                <div class="series-card">
+                    <div class="series-image">
+                        <img src="H1.jpg" alt="Harry Potter">
+                    </div>
 
-                    <button>
-                        Buy Now — $3.99
-                    </button>
+                    <div class="series-content">
+                        <div class="series-number">Series 01</div>
+                        <h3>Harry Potter</h3>
+                        <div class="series-books">7 Books</div>
+                        <p>
+                            Follow Harry Potter and his friends through their magical adventures at Hogwarts.
+                        </p>
+                        <a href="Expand.html" class="series-button">
+                            Show All 7 Books →
+                        </a>
+                    </div>
+                </div>
 
+                <div class="series-card">
+                    <div class="series-image">
+                        <img src="O1.jpg" alt="Heroes of Olympus">
+                    </div>
+
+                    <div class="series-content">
+                        <div class="series-number">Series 02</div>
+                        <h3>Heroes of Olympus</h3>
+                        <div class="series-books">5 Books</div>
+                        <p>
+                            Join the demigods as they face ancient enemies and dangerous quests.
+                        </p>
+                        <a href="Expand-O.html" class="series-button">
+                            Show All 5 Books →
+                        </a>
+                    </div>
+                </div>
+
+                <div class="series-card">
+                    <div class="series-image">
+                        <img src="Lord.jpg" alt="The Lord of the Rings">
+                    </div>
+
+                    <div class="series-content">
+                        <div class="series-number">Series 03</div>
+                        <h3>The Lord of the Rings</h3>
+                        <div class="series-books">3 Books</div>
+                        <p>
+                            Enter Middle-earth and follow an epic journey through a legendary fantasy world.
+                        </p>
+                        <a href="Expand-L.html" class="series-button">
+                            Show All 3 Books →
+                        </a>
+                    </div>
+                </div>
+
+                <div class="series-card">
+                    <div class="series-image">
+                        <img src="HU1.jpg" alt="The Hunger Games">
+                    </div>
+
+                    <div class="series-content">
+                        <div class="series-number">Series 04</div>
+                        <h3>The Hunger Games</h3>
+                        <div class="series-books">3 Books</div>
+                        <p>
+                            Follow Katniss Everdeen through the dangerous world of Panem.
+                        </p>
+                        <a href="Expand-HU.html" class="series-button">
+                            Show All 3 Books →
+                        </a>
+                    </div>
+                </div>
+
+                <div class="series-card">
+                    <div class="series-image">
+                        <img src="https://covers.openlibrary.org/b/title/The%20Lion%2C%20the%20Witch%20and%20the%20Wardrobe-L.jpg"
+                            alt="The Chronicles of Narnia">
+                    </div>
+
+                    <div class="series-content">
+                        <div class="series-number">Series 05</div>
+                        <h3>The Chronicles of Narnia</h3>
+                        <div class="series-books">7 Books</div>
+                        <p>
+                            Step through the wardrobe and discover the magical world of Narnia.
+                        </p>
+                        <a href="Expand-N.html" class="series-button">
+                            Show All 7 Books →
+                        </a>
+                    </div>
+                </div>
+
+                <div class="series-card">
+                    <div class="series-image">
+                        <img src="https://covers.openlibrary.org/b/title/The%20Lightning%20Thief-L.jpg"
+                            alt="Percy Jackson and the Olympians">
+                    </div>
+
+                    <div class="series-content">
+                        <div class="series-number">Series 06</div>
+                        <h3>Percy Jackson &amp; the Olympians</h3>
+                        <div class="series-books">5 Books</div>
+                        <p>
+                            Follow Percy Jackson as he discovers his connection to Greek mythology.
+                        </p>
+                        <a href="Expand-PJ.html" class="series-button">
+                            Show All 5 Books →
+                        </a>
+                    </div>
+                </div>
+
+                <div class="series-card">
+                    <div class="series-image">
+                        <img src="https://covers.openlibrary.org/b/title/Divergent-L.jpg" alt="Divergent">
+                    </div>
+
+                    <div class="series-content">
+                        <div class="series-number">Series 07</div>
+                        <h3>Divergent</h3>
+                        <div class="series-books">3 Books</div>
+                        <p>
+                            Enter a divided future society and follow Tris through her dangerous journey.
+                        </p>
+                        <a href="Expand-D.html" class="series-button">
+                            Show All 3 Books →
+                        </a>
+                    </div>
+                </div>
+
+                <div class="series-card">
+                    <div class="series-image">
+                        <img src="https://covers.openlibrary.org/b/title/The%20Maze%20Runner-L.jpg"
+                            alt="The Maze Runner">
+                    </div>
+
+                    <div class="series-content">
+                        <div class="series-number">Series 08</div>
+                        <h3>The Maze Runner</h3>
+                        <div class="series-books">3 Books</div>
+                        <p>
+                            Join Thomas and the Gladers as they try to escape a mysterious maze.
+                        </p>
+                        <a href="Expand-MR.html" class="series-button">
+                            Show All 3 Books →
+                        </a>
+                    </div>
                 </div>
 
             </div>
 
-            <div class="card">
+        </div>
 
-                <div class="card-image">
-                    <img src="Dune.jpg" alt="Dune">
-                </div>
+        <div id="booksSection">
 
-                <div class="card-content">
+            <div class="book-grid" id="bookGrid">
 
-                    <h3>Dune</h3>
-
-                    <p class="author">
-                        by Frank Herbert
-                    </p>
-
-                    <div class="rating">
-                        <span class="stars" style="--rating: 92%;"></span>
-                    </div>
-
-                    <p class="desc">
-                        A science fiction epic set in a distant future where a young man becomes connected
-                        to the fate of a desert planet.
-                    </p>
-
-                    <button>
-                        Buy Now — $3.99
-                    </button>
-
-                </div>
-
-            </div>
-
-            <div class="card harry-card">
-
-                <div class="card-image">
-                    <img src="H1.jpg" alt="Harry Potter">
-                </div>
-
-                <div class="card-content">
-
-                    <h3>Harry Potter</h3>
-
-                    <p class="author">
-                        by J.K. Rowling
-                    </p>
-
-                    <div class="rating">
-                        <span class="stars" style="--rating: 94%;"></span>
-                    </div>
-
-                    <p class="desc">
-                        A young wizard discovers his magical heritage and begins his journey at a school of
-                        witchcraft and wizardry.
-                    </p>
-
-                    <a href="Expand.html" class="expand-button">
-                        View All 7 Books
-                    </a>
-
-                </div>
-
-            </div>
-
-            <div class="card">
-
-                <div class="card-image">
-                    <img src="O1.jpg" alt="Heroes of Olympus">
-                </div>
-
-                <div class="card-content">
-
-                    <h3>Heroes of Olympus</h3>
-
-                    <p class="author">
-                        by Rick Riordan
-                    </p>
-
-                    <div class="rating">
-                        <span class="stars" style="--rating: 92%;"></span>
-                    </div>
-
-                    <p class="desc">
-                        A thrilling fantasy series where demigods from Greek and Roman mythology join forces
-                        to face powerful enemies and save the world.
-                    </p>
-
-                    <button>
-                        Buy Now — $3.99
-                    </button>
-
-                </div>
-
-            </div>
-
-            <div class="card">
-
-                <div class="card-image">
-                    <img src="Lord.jpg" alt="Lord of the Rings">
-                </div>
-
-                <div class="card-content">
-
-                    <h3>Lord of the Rings</h3>
-
-                    <p class="author">
-                        by J.R.R. Tolkien
-                    </p>
-
-                    <div class="rating">
-                        <span class="stars" style="--rating: 90%;"></span>
-                    </div>
-
-                    <p class="desc">
-                        A legendary fantasy adventure following a hobbit and his companions on a dangerous
-                        journey to destroy a powerful ring.
-                    </p>
-
-                    <a href="Expand-L.html" class="expand-button">
-                        View All 3 Books
-                    </a>
-
-                </div>
-
-            </div>
-
-            <div class="card">
-
-                <div class="card-image">
-                    <img src="W1.jpg" alt="Wild Dark Shore">
-                </div>
-
-                <div class="card-content">
-
-                    <h3>Wild Dark Shore</h3>
-
-                    <p class="author">
-                        by Charlotte McConaghy
-                    </p>
-
-                    <div class="rating">
-                        <span class="stars" style="--rating: 91%;"></span>
-                    </div>
-
-                    <p class="desc">
-                        A gripping story of family, survival, and nature set against the wild and isolated
-                        landscape of a remote island.
-                    </p>
-
-                    <button>
-                        Buy Now — $3.99
-                    </button>
-
+                <div class="loading">
+                    Loading your library...
+                    <span>Preparing 500+ books</span>
                 </div>
 
             </div>
@@ -688,13 +830,355 @@
 
     </section>
 
+    <a href="index.html" class="back-button">
+        ← Back to Home
+    </a>
+
     <footer>
-
         <p>
-            <strong>Online Books</strong> • Discover. Read. Enjoy.
+            <strong>Online Books</strong>
+            • Discover. Read. Enjoy.
         </p>
-
     </footer>
+
+    <script>
+
+        const originalBooks = [
+
+            {
+                title: "Dune",
+                author: "Frank Herbert",
+                image: "Dune.jpg",
+                category: "Science Fiction",
+                description: "A legendary science-fiction adventure set on the desert planet Arrakis.",
+                price: "4.99"
+            },
+
+            {
+                title: "David Copperfield",
+                author: "Charles Dickens",
+                image: "Dav.jpg",
+                category: "Classics",
+                description: "The life story of David Copperfield as he grows through hardship and adventure.",
+                price: "3.99"
+            },
+
+            {
+                title: "Wild Dark Shore",
+                author: "Charlotte McConaghy",
+                image: "W1.jpg",
+                category: "Adventure",
+                description: "A gripping story of family, nature and survival on a remote island.",
+                price: "4.49"
+            }
+
+        ];
+
+        const excludedSeriesWords = [
+            "harry potter",
+            "heroes of olympus",
+            "lord of the rings",
+            "lord of the ring",
+            "hunger games",
+            "catching fire",
+            "mockingjay",
+            "chronicles of narnia",
+            "narnia",
+            "percy jackson",
+            "olympians",
+            "divergent",
+            "insurgent",
+            "allegiant",
+            "maze runner",
+            "scorch trials",
+            "death cure"
+        ];
+
+        let allBooks = [...originalBooks];
+
+        let currentCategory = "All";
+
+        const bookGrid = document.getElementById("bookGrid");
+        const searchBox = document.getElementById("searchBox");
+        const bookCount = document.getElementById("bookCount");
+        const seriesSection = document.getElementById("seriesSection");
+        const booksSection = document.getElementById("booksSection");
+
+        function isSeriesBook(title) {
+
+            const lowerTitle = title.toLowerCase();
+
+            return excludedSeriesWords.some(word =>
+                lowerTitle.includes(word)
+            );
+        }
+
+        function createBook(book) {
+
+            const card = document.createElement("div");
+
+            card.className = "book";
+
+            card.innerHTML = `
+                <div class="book-image">
+                    <img
+                        src="${book.image}"
+                        alt="${book.title}"
+                        loading="lazy"
+                        onerror="this.src='https://covers.openlibrary.org/b/title/${encodeURIComponent(book.title)}-L.jpg'"
+                    >
+                </div>
+
+                <div class="book-content">
+
+                    <span class="book-category">
+                        ${book.category}
+                    </span>
+
+                    <h3>
+                        ${book.title}
+                    </h3>
+
+                    <p class="book-title">
+                        ${book.author}
+                    </p>
+
+                    <p class="book-desc">
+                        ${book.description}
+                    </p>
+
+                    <a href="#" class="buy-button">
+                        Buy Now — $${book.price}
+                    </a>
+
+                </div>
+            `;
+
+            return card;
+        }
+
+        function displayBooks() {
+
+            if (currentCategory === "Series") {
+
+                booksSection.style.display = "none";
+                seriesSection.style.display = "block";
+
+                bookCount.textContent = "Showing all 8 book series";
+
+                return;
+            }
+
+            seriesSection.style.display = "none";
+            booksSection.style.display = "block";
+
+            const search = searchBox.value.toLowerCase().trim();
+
+            const filteredBooks = allBooks.filter(book => {
+
+                const matchesCategory =
+                    currentCategory === "All" ||
+                    book.category === currentCategory;
+
+                const matchesSearch =
+                    book.title.toLowerCase().includes(search) ||
+                    book.author.toLowerCase().includes(search);
+
+                return matchesCategory && matchesSearch;
+            });
+
+            bookGrid.innerHTML = "";
+
+            filteredBooks.forEach(book => {
+                bookGrid.appendChild(createBook(book));
+            });
+
+            bookCount.textContent =
+                `Showing ${filteredBooks.length} of ${allBooks.length} other books`;
+
+            if (filteredBooks.length === 0) {
+
+                bookGrid.innerHTML = `
+                    <div class="loading">
+                        No books found.
+                        <span>Try another title, author or category.</span>
+                    </div>
+                `;
+            }
+        }
+
+        async function loadBooks() {
+
+            try {
+
+                const categories = [
+                    "fantasy",
+                    "adventure",
+                    "mystery",
+                    "science fiction",
+                    "classic literature",
+                    "romance",
+                    "horror",
+                    "young adult"
+                ];
+
+                const books = [];
+
+                const usedTitles = new Set(
+                    originalBooks.map(book =>
+                        book.title.toLowerCase()
+                    )
+                );
+
+                for (const category of categories) {
+
+                    if (books.length >= 520) {
+                        break;
+                    }
+
+                    for (let page = 1; page <= 3; page++) {
+
+                        if (books.length >= 520) {
+                            break;
+                        }
+
+                        const response = await fetch(
+                            `https://openlibrary.org/search.json?subject=${encodeURIComponent(category)}&page=${page}&limit=100`
+                        );
+
+                        const data = await response.json();
+
+                        for (const book of data.docs) {
+
+                            if (books.length >= 520) {
+                                break;
+                            }
+
+                            if (!book.title || !book.author_name) {
+                                continue;
+                            }
+
+                            const title = book.title.trim();
+                            const titleKey = title.toLowerCase();
+
+                            if (isSeriesBook(title)) {
+                                continue;
+                            }
+
+                            if (usedTitles.has(titleKey)) {
+                                continue;
+                            }
+
+                            usedTitles.add(titleKey);
+
+                            let image = "";
+
+                            if (book.cover_i) {
+                                image =
+                                    `https://covers.openlibrary.org/b/id/${book.cover_i}-L.jpg`;
+                            } else {
+                                image =
+                                    `https://covers.openlibrary.org/b/title/${encodeURIComponent(title)}-L.jpg`;
+                            }
+
+                            let categoryName = "Classics";
+
+                            if (category === "fantasy") {
+                                categoryName = "Fantasy";
+                            } else if (category === "adventure") {
+                                categoryName = "Adventure";
+                            } else if (category === "mystery") {
+                                categoryName = "Mystery";
+                            } else if (category === "science fiction") {
+                                categoryName = "Science Fiction";
+                            } else if (category === "classic literature") {
+                                categoryName = "Classics";
+                            } else if (category === "romance") {
+                                categoryName = "Romance";
+                            } else if (category === "horror") {
+                                categoryName = "Horror";
+                            } else if (category === "young adult") {
+                                categoryName = "Young Adult";
+                            }
+
+                            const prices = [
+                                "2.99",
+                                "3.49",
+                                "3.99",
+                                "4.49",
+                                "4.99"
+                            ];
+
+                            books.push({
+
+                                title: title,
+
+                                author: book.author_name[0],
+
+                                image: image,
+
+                                category: categoryName,
+
+                                description:
+                                    `Explore ${title}, a book by ${book.author_name[0]}. Discover its story, characters and unforgettable world.`,
+
+                                price:
+                                    prices[books.length % prices.length]
+
+                            });
+                        }
+                    }
+                }
+
+                allBooks = [
+                    ...originalBooks,
+                    ...books
+                ];
+
+                displayBooks();
+
+            } catch (error) {
+
+                console.error(error);
+
+                allBooks = [...originalBooks];
+
+                displayBooks();
+            }
+        }
+
+        searchBox.addEventListener(
+            "input",
+            displayBooks
+        );
+
+        document
+            .querySelectorAll(".filter-button")
+            .forEach(button => {
+
+                button.addEventListener("click", () => {
+
+                    document
+                        .querySelectorAll(".filter-button")
+                        .forEach(btn =>
+                            btn.classList.remove("active")
+                        );
+
+                    button.classList.add("active");
+
+                    currentCategory =
+                        button.dataset.category;
+
+                    displayBooks();
+                });
+
+            });
+
+        displayBooks();
+
+        loadBooks();
+
+    </script>
 
 </body>
 

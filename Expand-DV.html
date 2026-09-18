@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Harry Potter Collection - Online Books</title>
+    <title>Divergent Collection - Online Books</title>
 
     <style>
         * {
@@ -21,16 +21,13 @@
         body {
             font-family: Arial, Helvetica, sans-serif;
 
-            /* Harry Potter inspired background */
             background:
-                radial-gradient(circle at top, rgba(120, 87, 25, 0.25), transparent 35%),
-                linear-gradient(135deg, #070b18, #11182b 45%, #24151d 100%);
+                radial-gradient(circle at top, rgba(255, 94, 20, .25), transparent 35%),
+                linear-gradient(135deg, #070707, #18232d 45%, #10161d 100%);
 
-            color: #eee6d3;
+            color: #edf2f4;
             line-height: 1.6;
         }
-
-        /* ================= NAVIGATION ================= */
 
         nav {
             position: sticky;
@@ -43,52 +40,39 @@
 
             padding: 18px 30px;
 
-            background: rgba(7, 11, 24, .96);
+            background: rgba(8, 10, 12, .96);
 
             backdrop-filter: blur(14px);
 
-            border-bottom: 1px solid rgba(212, 175, 55, .5);
+            border-bottom: 1px solid rgba(255, 102, 35, .5);
 
-            box-shadow:
-                0 4px 25px rgba(0, 0, 0, .5);
+            box-shadow: 0 4px 25px rgba(0, 0, 0, .5);
         }
 
         nav a {
             position: relative;
-
-            color: #e8dfc7;
-
+            color: #dce5e9;
             text-decoration: none;
-
             font-size: 15px;
             font-weight: 600;
-
             padding: 6px 0;
-
             transition: .25s;
         }
 
         nav a:hover {
-            color: #d4af37;
+            color: #ff6b2c;
         }
 
         nav a::after {
             content: "";
-
             position: absolute;
-
             left: 50%;
             bottom: 0;
-
             width: 0;
             height: 2px;
-
-            background: #d4af37;
-
+            background: #ff6b2c;
             border-radius: 10px;
-
             transform: translateX(-50%);
-
             transition: .25s;
         }
 
@@ -96,25 +80,22 @@
             width: 100%;
         }
 
-        /* ================= HERO ================= */
-
         .hero {
             text-align: center;
-
             padding: 65px 20px 45px;
 
             background:
                 radial-gradient(circle at center,
-                    rgba(212, 175, 55, .12),
+                    rgba(255, 107, 44, .1),
                     transparent 60%);
         }
 
         .hero-label {
             display: inline-block;
 
-            color: #d4af37;
+            color: #ff8a52;
 
-            background: rgba(92, 19, 35, .65);
+            background: rgba(89, 30, 13, .65);
 
             padding: 7px 15px;
 
@@ -129,241 +110,169 @@
 
             margin-bottom: 15px;
 
-            border: 1px solid rgba(212, 175, 55, .5);
-
-            box-shadow:
-                0 0 20px rgba(212, 175, 55, .08);
+            border: 1px solid rgba(255, 107, 44, .5);
         }
 
         .hero h1 {
             font-size: clamp(32px, 5vw, 54px);
-
             font-weight: 800;
-
             letter-spacing: -1.5px;
-
-            color: #f1e6c8;
-
+            color: #edf2f4;
             margin-bottom: 10px;
-
-            text-shadow:
-                0 3px 15px rgba(0, 0, 0, .6);
+            text-shadow: 0 3px 15px rgba(0, 0, 0, .6);
         }
 
         .hero h1 span {
-            color: #d4af37;
-
-            text-shadow:
-                0 0 15px rgba(212, 175, 55, .25);
+            color: #ff6b2c;
+            text-shadow: 0 0 15px rgba(255, 107, 44, .25);
         }
 
         .hero p {
             max-width: 650px;
-
             margin: auto;
-
-            color: #bdb6a5;
-
+            color: #aebbc2;
             font-size: 17px;
         }
 
-        /* ================= BOOK SECTION ================= */
-
         .books {
             width: min(1250px, 92%);
-
             margin: 20px auto 50px;
         }
 
         .section-header {
             text-align: center;
-
             margin-bottom: 30px;
         }
 
         .small-title {
-            color: #d4af37;
-
+            color: #ff6b2c;
             font-size: 12px;
-
             font-weight: 700;
-
             letter-spacing: 1.5px;
-
             text-transform: uppercase;
-
             margin-bottom: 8px;
         }
 
         .section-header h2 {
             font-size: 34px;
-
-            color: #f1e6c8;
-
-            text-shadow:
-                0 3px 15px rgba(0, 0, 0, .5);
+            color: #edf2f4;
+            text-shadow: 0 3px 15px rgba(0, 0, 0, .5);
         }
 
         .section-header p {
-            color: #aaa596;
-
+            color: #909da4;
             margin-top: 5px;
         }
 
-        /* ================= BOOK GRID ================= */
-
         .book-grid {
             display: grid;
-
-            grid-template-columns:
-                repeat(auto-fit, minmax(220px, 1fr));
-
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 25px;
         }
 
-        /* ================= BOOK CARD ================= */
-
         .book {
             display: flex;
-
             flex-direction: column;
 
             background:
                 linear-gradient(145deg,
-                    rgba(25, 32, 54, .97),
-                    rgba(39, 22, 31, .97));
+                    rgba(27, 36, 44, .97),
+                    rgba(20, 20, 20, .97));
 
-            border: 1px solid rgba(212, 175, 55, .25);
+            border: 1px solid rgba(255, 107, 44, .25);
 
             border-radius: 16px;
-
             overflow: hidden;
 
-            box-shadow:
-                0 10px 30px rgba(0, 0, 0, .4);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, .4);
 
             transition: .3s;
         }
 
         .book:hover {
             transform: translateY(-8px);
-
-            border-color: #d4af37;
+            border-color: #ff6b2c;
 
             box-shadow:
                 0 18px 45px rgba(0, 0, 0, .6),
-                0 0 25px rgba(212, 175, 55, .12);
+                0 0 25px rgba(255, 107, 44, .12);
         }
-
-        /* ================= BOOK IMAGE ================= */
 
         .book-image {
             padding: 15px;
 
             background:
                 linear-gradient(135deg,
-                    #151c31,
-                    #321a25);
+                    #202b34,
+                    #351a11);
 
-            border-bottom:
-                1px solid rgba(212, 175, 55, .2);
+            border-bottom: 1px solid rgba(255, 107, 44, .2);
         }
 
         .book img {
             display: block;
-
             width: 100%;
-
             height: 310px;
-
             object-fit: cover;
-
             border-radius: 10px;
 
-            box-shadow:
-                0 8px 25px rgba(0, 0, 0, .55);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, .55);
 
             transition: .3s;
         }
 
         .book:hover img {
             transform: scale(1.025);
-
-            box-shadow:
-                0 12px 30px rgba(0, 0, 0, .7);
         }
-
-        /* ================= BOOK CONTENT ================= */
 
         .book-content {
             display: flex;
-
             flex-direction: column;
-
             flex-grow: 1;
-
             padding: 18px;
         }
 
         .book h3 {
-            color: #f1e6c8;
-
+            color: #edf2f4;
             font-size: 19px;
-
             margin-bottom: 3px;
         }
 
         .book-title {
-            color: #d4af37;
-
+            color: #ff6b2c;
             font-size: 13px;
-
             margin-bottom: 10px;
         }
 
         .book-desc {
-            color: #b5b0a4;
-
+            color: #aeb8bd;
             font-size: 14px;
-
             line-height: 1.6;
-
             margin-bottom: 18px;
-
             flex-grow: 1;
         }
 
-        /* ================= BUY BUTTON ================= */
-
         .buy-button {
             display: block;
-
             width: 100%;
-
             padding: 12px 16px;
-
             border-radius: 9px;
 
-            /* Burgundy + gold Harry Potter style */
             background:
                 linear-gradient(135deg,
-                    #5c1323,
-                    #7b1e32);
+                    #a83210,
+                    #d94e19);
 
-            color: #f7e8b0;
+            color: #fff1e9;
 
             font-size: 14px;
-
             font-weight: 700;
-
             text-align: center;
-
             text-decoration: none;
 
-            border: 1px solid rgba(212, 175, 55, .55);
+            border: 1px solid rgba(255, 107, 44, .55);
 
-            box-shadow:
-                0 6px 18px rgba(0, 0, 0, .4);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, .4);
 
             transition: .25s;
         }
@@ -373,40 +282,29 @@
 
             background:
                 linear-gradient(135deg,
-                    #b8860b,
-                    #d4af37);
+                    #ff6b2c,
+                    #ff944d);
 
-            color: #15101a;
-
-            border-color: #f1d878;
+            color: #17100d;
 
             box-shadow:
-                0 9px 25px rgba(212, 175, 55, .25);
+                0 9px 25px rgba(255, 107, 44, .25);
         }
-
-        /* ================= BACK BUTTON ================= */
 
         .back-button {
             display: block;
-
             width: 220px;
-
             margin: 0 auto 70px;
-
             padding: 12px 16px;
 
-            border: 2px solid #d4af37;
-
+            border: 2px solid #ff6b2c;
             border-radius: 9px;
 
-            color: #d4af37;
-
-            background: rgba(92, 19, 35, .25);
+            color: #ff6b2c;
+            background: rgba(89, 30, 13, .25);
 
             text-align: center;
-
             text-decoration: none;
-
             font-weight: 700;
 
             transition: .25s;
@@ -415,43 +313,31 @@
         .back-button:hover {
             background:
                 linear-gradient(135deg,
-                    #5c1323,
-                    #7b1e32);
+                    #a83210,
+                    #d94e19);
 
-            color: #f7e8b0;
+            color: white;
 
             box-shadow:
-                0 0 20px rgba(212, 175, 55, .18);
+                0 0 20px rgba(255, 107, 44, .18);
         }
 
-        /* ================= FOOTER ================= */
-
         footer {
-            background: #060914;
-
-            color: #85899a;
-
+            background: #07090b;
+            color: #737d83;
             text-align: center;
-
             padding: 25px 20px;
-
             font-size: 13px;
-
-            border-top:
-                1px solid rgba(212, 175, 55, .3);
+            border-top: 1px solid rgba(255, 107, 44, .3);
         }
 
         footer strong {
-            color: #d4af37;
+            color: #ff6b2c;
         }
 
-        /* ================= MOBILE ================= */
-
         @media (max-width:700px) {
-
             nav {
                 gap: 20px;
-
                 padding: 15px;
             }
 
@@ -477,7 +363,6 @@
         }
 
         @media (max-width:450px) {
-
             nav {
                 gap: 13px;
             }
@@ -498,6 +383,7 @@
 </head>
 
 <body>
+
     <nav>
         <a href="index.html">Home</a>
         <a href="books.html">Books</a>
@@ -509,16 +395,16 @@
     <section class="hero">
 
         <div class="hero-label">
-            Harry Potter Collection
+            Divergent Collection
         </div>
 
         <h1>
-            Explore All <span>7 Books</span>
+            Explore All <span>3 Books</span>
         </h1>
 
         <p>
-            Discover the complete Harry Potter collection,
-            from Harry's first adventure to the final chapter.
+            Enter a divided future where society is built around factions,
+            identity and the courage to choose your own path.
         </p>
 
     </section>
@@ -532,11 +418,11 @@
             </div>
 
             <h2>
-                Harry Potter Books
+                Divergent Books
             </h2>
 
             <p>
-                Explore all seven books in the series.
+                Explore all three books in the Divergent trilogy.
             </p>
 
         </div>
@@ -544,198 +430,74 @@
         <div class="book-grid">
 
             <div class="book">
-
                 <div class="book-image">
-                    <img src="H1.jpg" alt="Harry Potter and the Philosopher's Stone">
+                    <img src="https://covers.openlibrary.org/b/title/Divergent-L.jpg" alt="Divergent">
                 </div>
 
                 <div class="book-content">
-
-                    <h3>Harry Potter 1</h3>
+                    <h3>Divergent 1</h3>
 
                     <p class="book-title">
-                        Harry Potter and the Philosopher's Stone
+                        Divergent
                     </p>
 
                     <p class="book-desc">
-                        Harry discovers the magical world and begins
-                        his journey at Hogwarts.
+                        Tris Prior discovers that she does not fit neatly
+                        into one faction and must uncover a dangerous secret.
                     </p>
 
                     <a href="#" class="buy-button">
                         Buy Now — $3.99
                     </a>
-
                 </div>
-
             </div>
 
 
             <div class="book">
-
                 <div class="book-image">
-                    <img src="H2.jpg" alt="Harry Potter and the Chamber of Secrets">
+                    <img src="https://covers.openlibrary.org/b/title/Insurgent-L.jpg" alt="Insurgent">
                 </div>
 
                 <div class="book-content">
-
-                    <h3>Harry Potter 2</h3>
+                    <h3>Divergent 2</h3>
 
                     <p class="book-title">
-                        Harry Potter and the Chamber of Secrets
+                        Insurgent
                     </p>
 
                     <p class="book-desc">
-                        Harry returns to Hogwarts and faces a mysterious
-                        danger hidden within the school.
+                        Tris and her allies struggle to survive while the
+                        conflict between the factions grows more dangerous.
                     </p>
 
                     <a href="#" class="buy-button">
                         Buy Now — $3.99
                     </a>
-
                 </div>
-
             </div>
 
 
             <div class="book">
-
                 <div class="book-image">
-                    <img src="H3.jpg" alt="Harry Potter and the Prisoner of Azkaban">
+                    <img src="https://covers.openlibrary.org/b/title/Allegiant-L.jpg" alt="Allegiant">
                 </div>
 
                 <div class="book-content">
-
-                    <h3>Harry Potter 3</h3>
+                    <h3>Divergent 3</h3>
 
                     <p class="book-title">
-                        Harry Potter and the Prisoner of Azkaban
+                        Allegiant
                     </p>
 
                     <p class="book-desc">
-                        Harry learns more about his past when a dangerous
-                        prisoner escapes from Azkaban.
+                        Tris and Tobias leave the city to discover the truth
+                        behind the world they have always known.
                     </p>
 
                     <a href="#" class="buy-button">
                         Buy Now — $3.99
                     </a>
-
                 </div>
-
-            </div>
-
-
-            <div class="book">
-
-                <div class="book-image">
-                    <img src="H4.jpg" alt="Harry Potter and the Goblet of Fire">
-                </div>
-
-                <div class="book-content">
-
-                    <h3>Harry Potter 4</h3>
-
-                    <p class="book-title">
-                        Harry Potter and the Goblet of Fire
-                    </p>
-
-                    <p class="book-desc">
-                        Harry is unexpectedly chosen to compete in the
-                        dangerous Triwizard Tournament.
-                    </p>
-
-                    <a href="#" class="buy-button">
-                        Buy Now — $3.99
-                    </a>
-
-                </div>
-
-            </div>
-
-
-            <div class="book">
-
-                <div class="book-image">
-                    <img src="H5.jpg" alt="Harry Potter and the Order of the Phoenix">
-                </div>
-
-                <div class="book-content">
-
-                    <h3>Harry Potter 5</h3>
-
-                    <p class="book-title">
-                        Harry Potter and the Order of the Phoenix
-                    </p>
-
-                    <p class="book-desc">
-                        Harry and his friends prepare for the growing
-                        threat of Voldemort's return.
-                    </p>
-
-                    <a href="#" class="buy-button">
-                        Buy Now — $3.99
-                    </a>
-
-                </div>
-
-            </div>
-
-
-            <div class="book">
-
-                <div class="book-image">
-                    <img src="H6.jpg" alt="Harry Potter and the Half-Blood Prince">
-                </div>
-
-                <div class="book-content">
-
-                    <h3>Harry Potter 6</h3>
-
-                    <p class="book-title">
-                        Harry Potter and the Half-Blood Prince
-                    </p>
-
-                    <p class="book-desc">
-                        Harry discovers important secrets about Voldemort
-                        and prepares for the final battle.
-                    </p>
-
-                    <a href="#" class="buy-button">
-                        Buy Now — $3.99
-                    </a>
-
-                </div>
-
-            </div>
-
-
-            <div class="book">
-
-                <div class="book-image">
-                    <img src="H7.jpg" alt="Harry Potter and the Deathly Hallows">
-                </div>
-
-                <div class="book-content">
-
-                    <h3>Harry Potter 7</h3>
-
-                    <p class="book-title">
-                        Harry Potter and the Deathly Hallows
-                    </p>
-
-                    <p class="book-desc">
-                        Harry and his friends face their greatest
-                        challenge as the final battle approaches.
-                    </p>
-
-                    <a href="#" class="buy-button">
-                        Buy Now — $3.99
-                    </a>
-
-                </div>
-
             </div>
 
         </div>
@@ -747,12 +509,10 @@
     </a>
 
     <footer>
-
         <p>
             <strong>Online Books</strong>
             • Discover. Read. Enjoy.
         </p>
-
     </footer>
 
 </body>
